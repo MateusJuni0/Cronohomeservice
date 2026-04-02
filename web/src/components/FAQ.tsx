@@ -29,7 +29,7 @@ const FAQS = [
   {
     question: "O que acontece se aparecerem problemas ocultos na obra?",
     answer:
-      "Antes de iniciar, fazemos uma inspeção técnica completa. Se surgir algo inesperado durante a obra, contactamos imediatamente, explicamos a situação e apresentamos opções com custos antes de avançar. Sem surpresas.",
+      "Antes de iniciar, fazemos uma inspecção técnica completa. Se surgir algo inesperado durante a obra, contactamos imediatamente, explicamos a situação e apresentamos opções com custos antes de avançar. Sem surpresas.",
   },
 ];
 
@@ -40,9 +40,9 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
     <div className="border-b border-white/10">
       <button
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between py-5 text-left"
+        className="flex w-full items-center justify-between py-5 text-left cursor-pointer"
       >
-        <span className="pr-4 text-base font-medium text-white sm:text-lg">{question}</span>
+        <span className="pr-4 text-base font-medium sm:text-lg" style={{ color: "#FFFFFF" }}>{question}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
@@ -70,18 +70,20 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQ() {
   return (
-    <SectionWrapper className="bg-mesh py-28">
+    <SectionWrapper id="duvidas" className="section-glass py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Dúvidas"
-          title="Perguntas Frequentes"
-          subtitle="Esclarecemos as dúvidas mais comuns antes de começar."
-        />
+        <div className="glass-panel rounded-2xl p-8 sm:p-12">
+          <SectionHeader
+            eyebrow="Dúvidas"
+            title="Perguntas Frequentes"
+            subtitle="Esclarecemos as dúvidas mais comuns antes de começar."
+          />
 
-        <div className="mt-12">
-          {FAQS.map((faq) => (
-            <FAQItem key={faq.question} {...faq} />
-          ))}
+          <div className="mt-12">
+            {FAQS.map((faq) => (
+              <FAQItem key={faq.question} {...faq} />
+            ))}
+          </div>
         </div>
       </div>
     </SectionWrapper>

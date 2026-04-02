@@ -49,52 +49,54 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <SectionWrapper id="servicos" className="bg-dots py-28">
+    <SectionWrapper id="servicos" className="section-glass py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Nossos Serviços"
-          title="Soluções completas para a sua casa"
-          subtitle="Do projecto à entrega — cada detalhe importa."
-        />
+        <div className="glass-panel rounded-2xl p-8 sm:p-12">
+          <SectionHeader
+            eyebrow="Nossos Serviços"
+            title="Soluções completas para a sua casa"
+            subtitle="Do projecto à entrega — cada detalhe importa."
+          />
 
-        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
-          {SERVICES.map((service) => (
-            <motion.div
-              key={service.title}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.3 }}
-              className="group relative cursor-default overflow-hidden border border-gold/10 bg-[#0D1526] p-8 transition-all duration-300 hover:border-gold/40 hover:shadow-[0_20px_60px_rgba(201,168,76,0.08)]"
-            >
-              {/* Watermark number */}
-              <span className="pointer-events-none absolute right-6 top-4 select-none font-serif text-[96px] leading-none text-gold/[0.07]">
-                {service.number}
-              </span>
+          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
+            {SERVICES.map((service) => (
+              <motion.div
+                key={service.title}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="glass-card group relative cursor-default overflow-hidden rounded-xl p-8"
+              >
+                {/* Watermark number */}
+                <span className="pointer-events-none absolute right-6 top-4 select-none font-serif text-[96px] leading-none text-gold/[0.06]">
+                  {service.number}
+                </span>
 
-              <div className="relative">
-                {/* Icon container */}
-                <div className="mb-6 flex h-14 w-14 items-center justify-center border border-gold/40 text-gold transition-all duration-300 group-hover:border-gold group-hover:bg-gold/5">
-                  {service.icon}
+                <div className="relative">
+                  {/* Icon container */}
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center border border-gold/30 text-gold transition-all duration-300 group-hover:border-gold group-hover:bg-gold/10 rounded-lg">
+                    {service.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="mb-3 font-serif text-2xl" style={{ color: "#FFFFFF" }}>{service.title}</h3>
+
+                  {/* Gold line */}
+                  <span className="mb-4 block h-[1px] w-10 bg-gold" />
+
+                  {/* Description */}
+                  <p className="mb-6 text-sm leading-relaxed text-muted">
+                    {service.description}
+                  </p>
+
+                  {/* CTA */}
+                  <div className="flex items-center gap-2 text-sm font-medium text-gold/70 transition-all duration-300 group-hover:gap-3 group-hover:text-gold">
+                    <span>Saber mais</span>
+                    <span className="inline-block">&rarr;</span>
+                  </div>
                 </div>
-
-                {/* Title */}
-                <h3 className="mb-3 font-serif text-2xl text-[#F8F6F1]">{service.title}</h3>
-
-                {/* Gold line */}
-                <span className="mb-4 block h-[1px] w-10 bg-gold" />
-
-                {/* Description */}
-                <p className="mb-6 text-sm leading-relaxed text-white/55">
-                  {service.description}
-                </p>
-
-                {/* CTA */}
-                <div className="flex items-center gap-2 text-sm font-medium text-gold transition-all duration-300 group-hover:gap-3">
-                  <span>Saber mais</span>
-                  <span className="inline-block">&rarr;</span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </SectionWrapper>

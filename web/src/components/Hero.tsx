@@ -1,7 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+
+const LightRays = dynamic(() => import("./LightRays"), { ssr: false });
 
 const TRUST_ITEMS = [
   {
@@ -45,16 +47,25 @@ const TRUST_ITEMS = [
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80"
-        alt="Cozinha premium remodelada"
-        fill
-        priority
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#080E1A]/90 via-[#080E1A]/70 to-[#080E1A]/40" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#080E1A] to-transparent" />
+      {/* LightRays Background */}
+      <div className="absolute inset-0 z-0">
+        <LightRays
+          raysColor="#C9A84C"
+          raysOrigin="top-center"
+          raysSpeed={0.6}
+          lightSpread={1.5}
+          rayLength={2.5}
+          pulsating={true}
+          fadeDistance={0.8}
+          saturation={0.6}
+          followMouse={true}
+          mouseInfluence={0.08}
+          noiseAmount={0.15}
+          distortion={0.1}
+        />
+      </div>
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#0C0A09]/60 via-[#0C0A09]/40 to-[#0C0A09]/80" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center sm:px-6 lg:px-8">
@@ -71,7 +82,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-serif text-4xl font-light leading-[1.1] text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          className="font-serif text-4xl font-light leading-[1.1] text-[rgba(250,250,249,0.95)] sm:text-5xl md:text-6xl lg:text-7xl"
         >
           Transformamos a sua casa.
         </motion.h1>
@@ -89,7 +100,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="mx-auto mt-8 max-w-2xl text-lg font-light text-muted sm:text-xl"
+          className="mx-auto mt-8 max-w-2xl text-lg font-light sm:text-xl" style={{ color: "rgba(250,250,249,0.80)" }}
         >
           20 anos de experiência em remodelações em Lisboa e arredores.
           Orçamento gratuito em 24h.
@@ -105,15 +116,15 @@ export default function Hero() {
             href="#orcamento"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="gold-glow w-full bg-gold px-10 py-4 text-lg font-semibold text-[#080E1A] sm:w-auto"
+            className="btn-gold-glass w-full rounded-lg px-10 py-4 text-lg font-semibold sm:w-auto"
           >
             Pedir Orçamento Grátis
           </motion.a>
           <motion.a
-            href="#portfolio"
+            href="/portfolio"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="w-full border border-white/30 px-10 py-4 text-lg font-medium text-white transition-colors hover:border-gold hover:text-gold sm:w-auto"
+            className="btn-glass w-full rounded-lg px-10 py-4 text-lg font-medium sm:w-auto"
           >
             Ver Portfólio
           </motion.a>
@@ -127,11 +138,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
-              className="group flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-5 backdrop-blur-sm transition-all duration-300 hover:border-gold/30 hover:bg-white/[0.08]"
+              className="glass-card group flex flex-col items-center gap-2 rounded-xl px-4 py-5"
             >
               <span className="text-gold">{item.icon}</span>
-              <span className="text-sm font-semibold text-white">{item.title}</span>
-              <span className="text-[11px] text-muted">{item.subtitle}</span>
+              <span className="text-sm font-semibold text-[rgba(250,250,249,0.9)]">{item.title}</span>
+              <span className="text-[11px]" style={{ color: "rgba(250,250,249,0.65)" }}>{item.subtitle}</span>
             </motion.div>
           ))}
         </div>
@@ -149,7 +160,7 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] font-medium tracking-[0.2em] text-white/30 uppercase">Scroll</span>
+          <span className="text-[10px] font-medium tracking-[0.2em] text-[rgba(250,250,249,0.3)] uppercase">Scroll</span>
           <svg className="h-5 w-5 text-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>

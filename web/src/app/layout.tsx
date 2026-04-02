@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import FloatingLinesBackground from "@/components/FloatingLinesBackground";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -89,7 +90,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="relative min-h-full flex flex-col bg-base">
+        {/* Fixed FloatingLines background behind everything */}
+        <FloatingLinesBackground />
+        {/* Content on top */}
+        <div className="relative z-[1] flex min-h-full flex-col">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

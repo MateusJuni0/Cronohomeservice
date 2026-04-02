@@ -49,46 +49,48 @@ const STEPS = [
 
 export default function Method() {
   return (
-    <SectionWrapper id="metodo" className="bg-diagonals py-28">
+    <SectionWrapper id="metodo" className="section-glass py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="O Método"
-          title="Do contacto à entrega da chave"
-          subtitle="Sem surpresas, sem caos. 4 passos para a sua casa nova."
-        />
+        <div className="glass-panel rounded-2xl p-8 sm:p-12">
+          <SectionHeader
+            eyebrow="O Método"
+            title="Do contacto à entrega da chave"
+            subtitle="Sem surpresas, sem caos. 4 passos para a sua casa nova."
+          />
 
-        {/* Timeline vertical */}
-        <div className="relative mt-16">
-          {/* Connector line */}
-          <div className="absolute left-[27px] top-12 bottom-12 w-[1px] bg-gradient-to-b from-gold/60 via-gold/20 to-transparent" />
+          {/* Timeline vertical */}
+          <div className="relative mt-16">
+            {/* Connector line */}
+            <div className="absolute left-[27px] top-12 bottom-12 w-[1px] bg-gradient-to-b from-gold/60 via-gold/20 to-transparent" />
 
-          {STEPS.map((step, i) => (
-            <div key={step.number} className={`relative flex gap-6 ${i < STEPS.length - 1 ? "mb-10" : ""}`}>
-              {/* Number box */}
-              <div className="z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center border border-gold/50 bg-[#080E1A]">
-                <span className="font-serif text-lg text-gold">{step.number}</span>
-              </div>
-
-              {/* Content */}
-              <div className={`flex-1 pt-2 ${i < STEPS.length - 1 ? "border-b border-white/5 pb-8" : ""}`}>
-                <div className="mb-2 flex items-center gap-3">
-                  <span className="text-gold/60">{step.icon}</span>
-                  <h3 className="font-serif text-xl text-[#F8F6F1]">{step.title}</h3>
+            {STEPS.map((step, i) => (
+              <div key={step.number} className={`relative flex gap-6 ${i < STEPS.length - 1 ? "mb-10" : ""}`}>
+                {/* Number box */}
+                <div className="z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center border border-gold/30 bg-[rgba(255,255,255,0.08)] backdrop-blur-md rounded-lg">
+                  <span className="font-serif text-lg text-gold">{step.number}</span>
                 </div>
-                <p className="text-sm leading-relaxed text-white/50">{step.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
 
-        {/* CTA */}
-        <div className="mt-14 text-center">
-          <a
-            href="#orcamento"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gold transition-colors hover:text-gold-light"
-          >
-            Pronto para começar? <span>&rarr;</span> Pedir orçamento
-          </a>
+                {/* Content */}
+                <div className={`flex-1 pt-2 ${i < STEPS.length - 1 ? "border-b border-white/10 pb-8" : ""}`}>
+                  <div className="mb-2 flex items-center gap-3">
+                    <span className="text-gold">{step.icon}</span>
+                    <h3 className="font-serif text-xl" style={{ color: "#FFFFFF" }}>{step.title}</h3>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-14 text-center">
+            <a
+              href="#orcamento"
+              className="btn-glass inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium"
+            >
+              Pronto para começar? <span>&rarr;</span> Pedir orçamento
+            </a>
+          </div>
         </div>
       </div>
     </SectionWrapper>

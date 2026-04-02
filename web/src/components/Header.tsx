@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS = [
   { label: "Serviços", href: "#servicos" },
-  { label: "Portfólio", href: "#portfolio" },
+  { label: "Portfólio", href: "/portfolio" },
   { label: "O Método", href: "#metodo" },
   { label: "Orçamento", href: "#orcamento" },
 ];
@@ -25,14 +25,14 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#080E1A]/90 backdrop-blur-xl border-b border-gold/10 shadow-lg shadow-black/30"
-          : "bg-transparent border-b border-transparent"
+          ? "bg-[#0C0A09]/95 backdrop-blur-xl border-b border-gold/10 shadow-lg shadow-black/30"
+          : "bg-[#0C0A09]/60 backdrop-blur-md border-b border-white/5"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 shrink-0">
+          <a href="/" className="flex items-center gap-3 shrink-0">
             <Image
               src="/logo.png"
               width={44}
@@ -44,7 +44,7 @@ export default function Header() {
               <span className="text-base font-bold tracking-wide text-white">
                 CRONOGRAMA
               </span>
-              <span className="text-[10px] font-light tracking-[0.2em] text-gold/50">
+              <span className="text-[10px] font-light tracking-[0.2em] text-gold/70">
                 Home Service
               </span>
             </div>
@@ -56,7 +56,7 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="nav-link text-sm font-medium text-white/60 transition-colors hover:text-white"
+                className="nav-link text-sm font-medium text-[rgba(250,250,249,0.6)] transition-colors hover:text-[rgba(250,250,249,0.9)]"
               >
                 {item.label}
               </a>
@@ -65,7 +65,7 @@ export default function Header() {
               href="#orcamento"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="gold-glow bg-gold px-6 py-2.5 text-sm font-semibold text-[#080E1A]"
+              className="gold-glow bg-gold px-6 py-2.5 text-sm font-semibold text-[#0C0A09]"
             >
               Pedir Orçamento
             </motion.a>
@@ -79,15 +79,15 @@ export default function Header() {
           >
             <motion.span
               animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="block h-0.5 w-6 bg-white"
+              className="block h-0.5 w-6 bg-[rgba(250,250,249,0.85)]"
             />
             <motion.span
               animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-0.5 w-6 bg-white"
+              className="block h-0.5 w-6 bg-[rgba(250,250,249,0.85)]"
             />
             <motion.span
               animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="block h-0.5 w-6 bg-white"
+              className="block h-0.5 w-6 bg-[rgba(250,250,249,0.85)]"
             />
           </button>
         </div>
@@ -101,7 +101,7 @@ export default function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-gold/10 bg-[#080E1A]/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-gold/10 bg-[#0C0A09]/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
               {NAV_ITEMS.map((item) => (
@@ -109,7 +109,7 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-base font-medium text-white/70 transition-colors hover:text-gold"
+                  className="px-4 py-3 text-base font-medium text-[rgba(250,250,249,0.7)] transition-colors hover:text-gold"
                 >
                   {item.label}
                 </a>
@@ -117,7 +117,7 @@ export default function Header() {
               <a
                 href="#orcamento"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 gold-glow bg-gold px-4 py-3 text-center text-base font-semibold text-[#080E1A]"
+                className="mt-2 gold-glow bg-gold px-4 py-3 text-center text-base font-semibold text-[#0C0A09]"
               >
                 Pedir Orçamento
               </a>

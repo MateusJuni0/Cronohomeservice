@@ -118,10 +118,10 @@ export default function LeadForm() {
 
   if (submitted) {
     return (
-      <SectionWrapper id="orcamento" className="bg-form-gradient py-28">
+      <SectionWrapper id="orcamento" className="section-glass py-28">
         <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <div className="border border-gold/30 bg-surface/80 p-12 backdrop-blur-sm">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-gold/20 text-gold">
+          <div className="glass-panel rounded-2xl p-12">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-gold/20 text-gold rounded-full">
               <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
@@ -137,22 +137,22 @@ export default function LeadForm() {
   }
 
   return (
-    <SectionWrapper id="orcamento" className="bg-form-gradient py-28">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6">
+    <SectionWrapper id="orcamento" className="section-glass py-28">
+      <div className="relative z-10 mx-auto max-w-2xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Orçamento Grátis"
           title="Descreva o seu projecto"
           subtitle="Responda a 4 perguntas rápidas e receba uma avaliação personalizada."
         />
 
-        <div className="mt-12 border border-gold/20 bg-surface/80 p-8 backdrop-blur-sm">
+        <div className="mt-12 glass-panel rounded-2xl p-8">
           {/* Progress bar */}
           <div className="mb-8">
             <div className="flex justify-between text-xs text-muted mb-2">
               <span>Passo {step} de 4</span>
               <span>{Math.round((step / 4) * 100)}%</span>
             </div>
-            <div className="h-1 bg-white/10">
+            <div className="h-1 bg-white/15 rounded-full overflow-hidden">
               <motion.div
                 className="h-full bg-gold"
                 animate={{ width: `${(step / 4) * 100}%` }}
@@ -170,10 +170,10 @@ export default function LeadForm() {
                     <button
                       key={wt.value}
                       onClick={() => setFormData({ ...formData, workType: wt.value })}
-                      className={`flex flex-col items-center gap-2 border p-4 text-sm transition-all ${
+                      className={`flex flex-col items-center gap-2 border rounded-lg p-4 text-sm transition-all cursor-pointer ${
                         formData.workType === wt.value
                           ? "border-gold bg-gold/10 text-gold"
-                          : "border-white/10 text-muted hover:border-white/30"
+                          : "border-white/15 text-muted hover:border-gold/40"
                       }`}
                     >
                       <span className="text-gold">{wt.icon}</span>
@@ -192,10 +192,10 @@ export default function LeadForm() {
                     <button
                       key={u.value}
                       onClick={() => setFormData({ ...formData, urgency: u.value })}
-                      className={`border p-4 text-left transition-all ${
+                      className={`border rounded-lg p-4 text-left transition-all cursor-pointer ${
                         formData.urgency === u.value
                           ? "border-gold bg-gold/10"
-                          : "border-white/10 hover:border-white/30"
+                          : "border-white/15 hover:border-gold/40"
                       }`}
                     >
                       <p className={`font-semibold ${formData.urgency === u.value ? "text-gold" : "text-white"}`}>
@@ -216,7 +216,7 @@ export default function LeadForm() {
                   placeholder="Ex: Rua das Flores, Lisboa"
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  className="w-full border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-white/30 focus:border-gold focus:outline-none"
+                  className="w-full border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-white/50 focus:border-gold focus:outline-none"
                 />
                 <p className="mt-3 text-sm text-muted">
                   Pode indicar apenas a zona (ex: &ldquo;Benfica, Lisboa&rdquo;).
@@ -233,14 +233,14 @@ export default function LeadForm() {
                     placeholder="O seu nome"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-white/30 focus:border-gold focus:outline-none"
+                    className="w-full border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-white/50 focus:border-gold focus:outline-none"
                   />
                   <input
                     type="tel"
                     placeholder="WhatsApp (ex: 912 345 678)"
                     value={formData.whatsapp}
                     onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                    className="w-full border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-white/30 focus:border-gold focus:outline-none"
+                    className="w-full border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder:text-white/50 focus:border-gold focus:outline-none"
                   />
                 </div>
               </motion.div>
@@ -252,9 +252,9 @@ export default function LeadForm() {
             {step > 1 ? (
               <button
                 onClick={() => setStep(step - 1)}
-                className="text-sm font-medium text-muted transition-colors hover:text-white"
+                className="text-sm font-medium text-muted transition-colors hover:text-gold cursor-pointer"
               >
-                ← Voltar
+                &larr; Voltar
               </button>
             ) : (
               <div />
@@ -266,9 +266,9 @@ export default function LeadForm() {
                 disabled={!canAdvance()}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-gold px-8 py-3 text-sm font-semibold text-[#080E1A] transition-colors hover:bg-gold-light disabled:cursor-not-allowed disabled:opacity-40"
+                className="btn-gold-glass rounded-lg px-8 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer"
               >
-                Continuar →
+                Continuar &rarr;
               </motion.button>
             ) : (
               <motion.button
@@ -276,7 +276,7 @@ export default function LeadForm() {
                 disabled={!canAdvance() || submitting}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="gold-glow w-full bg-gold py-4 text-sm font-semibold tracking-[0.15em] text-[#080E1A] uppercase transition-colors hover:bg-gold-light disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto sm:px-12"
+                className="btn-gold-glass w-full rounded-lg py-4 text-sm font-semibold tracking-[0.15em] uppercase disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto sm:px-12 cursor-pointer"
               >
                 {submitting ? "A enviar..." : "Receber Avaliação por WhatsApp"}
               </motion.button>
