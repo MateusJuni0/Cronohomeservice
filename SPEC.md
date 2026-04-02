@@ -80,7 +80,27 @@ A landing page será uma "One-Page" longa de alta conversão, arquitetada para s
 
 ---
 
-## 5. ARQUITETURA TÉCNICA E PERFORMANCE (A Máquina)
+## 6. O GAP PARA O MERCADO ELITE (O que os Tubaroes fazem e nos vamos roubar)
+
+Fizemos engenharia reversa a empresas de classe A em Portugal (como o MAP Group, Urban Obras e Building in Portugal). Para a Crono cobrar precos premium sem o cliente pestanejar, temos de injetar no site os gatilhos que estas gigantes usam:
+
+### 6.1. O Gatilho [Chave na Mao] (Fim da Burocracia)
+- **O que os grandes fazem:** Assumem o projeto de A a Z.
+- **O que vamos colocar no site:** Um bloco forte a dizer: **Nos lidamos com a Camara, com as Plantas e com o Entulho. O seu unico trabalho e escolher os acabamentos.** Em Portugal, o medo da burocracia e brutal. Temos de matar isso.
+
+### 6.2. Figura do [Gestor de Projeto Unico]
+- **O que os grandes fazem:** O cliente nao fala com o pedreiro, fala com um engenheiro/gestor.
+- **O que vamos colocar no site:** **Um Unico Interlocutor.** O front-end tera uma seccao a explicar que o cliente tera um gestor de obra dedicado no WhatsApp para o informar do progresso.
+
+### 6.3. Garantia Legal vs Garantia Premium
+- **O que os grandes fazem:** Esfregam a garantia de 5 anos (obrigatoria por lei) na cara do cliente como se fosse um bonus.
+- **O que vamos colocar no site:** Um selo visual blindado: **Garantia Total de 5 Anos em todas as intervençoes estruturais, com assistencia rapida em 48h.**
+
+### 6.4. Parcerias de Materiais (Brand Borrowing)
+- **O que os grandes fazem:** Exibem logos de marcas premium de construcao (Margres, Roca, CIN, Grohe, Pladur).
+- **O que vamos colocar no site:** Um carrossel de logos das marcas com que a Crono trabalha. O subconsciente pensa: *Se eles usam material Grohe/Roca, o servico e Premium.* E transferencia direta de autoridade.
+
+## 7. ARQUITETURA TÉCNICA E PERFORMANCE (A Máquina)
 - **Framework:** Next.js 16 App Router. SSR garante que a página é indexada a 100% pelos motores de busca (Ao contrário de muitos SPA's ou construtores de arrastar/soltar).
 - **Styling & UI:** TailwindCSS 4 para design utility-first + Framer Motion para entradas suaves, parallax e interações táteis (micro-animações geram percepção de qualidade).
 - **Assets:** Imagens em formato `.avif` / `.webp` para manter qualidade máxima com 10% do tamanho. Lazy loading em todas as imagens abaixo do Hero.
