@@ -33,14 +33,18 @@ export default function Footer() {
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             {/* Brand */}
             <div>
-              <a href="/">
+              <a href="/" className="flex items-center gap-3">
                 <Image
                   src="/logo.png"
-                  width={140}
-                  height={42}
+                  width={36}
+                  height={36}
                   alt="Cronograma Home Service"
-                  className="object-contain h-10 w-auto sm:h-11"
+                  className="object-contain"
                 />
+                <div className="flex flex-col leading-tight">
+                  <span className="text-sm font-bold tracking-wide" style={{ color: "#FFFFFF" }}>CRONOGRAMA</span>
+                  <span className="text-[9px] font-light tracking-[0.2em]" style={{ color: "#C9A84C" }}>Home Service</span>
+                </div>
               </a>
               <p className="mt-4 text-sm leading-relaxed" style={{ color: "#D6D3D1" }}>
                 Remodelações de alta qualidade em Lisboa e arredores. Transformamos a sua casa — no prazo e no orçamento.

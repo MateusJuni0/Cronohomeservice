@@ -32,14 +32,22 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <a href="/" className="shrink-0">
+          <a href="/" className="flex items-center gap-2 shrink-0 sm:gap-3">
             <Image
               src="/logo.png"
-              width={160}
-              height={48}
+              width={44}
+              height={44}
               alt="Cronograma Home Service"
-              className="object-contain h-10 w-auto sm:h-12"
+              className="object-contain h-9 w-9 sm:h-11 sm:w-11"
             />
+            <div className="flex flex-col leading-tight">
+              <span className="text-sm font-bold tracking-wide sm:text-base" style={{ color: "#FFFFFF" }}>
+                CRONOGRAMA
+              </span>
+              <span className="text-[9px] font-light tracking-[0.2em] sm:text-[10px]" style={{ color: "#C9A84C" }}>
+                Home Service
+              </span>
+            </div>
           </a>
 
           {/* Desktop Nav */}
