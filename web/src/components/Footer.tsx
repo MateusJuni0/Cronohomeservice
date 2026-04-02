@@ -30,26 +30,27 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Brand */}
-            <div>
-              <a href="/" className="flex items-center gap-3">
-                <Image
-                  src="/logo.png"
-                  width={36}
-                  height={36}
-                  alt="Cronograma Home Service"
-                  className="object-contain"
-                />
-                <div className="flex flex-col leading-tight">
-                  <span className="text-sm font-bold tracking-wide" style={{ color: "#FFFFFF" }}>CRONOGRAMA</span>
-                  <span className="text-[9px] font-light tracking-[0.2em]" style={{ color: "#C9A84C" }}>Home Service</span>
-                </div>
-              </a>
-              <p className="mt-4 text-sm leading-relaxed" style={{ color: "#D6D3D1" }}>
+          {/* Brand — logo grande + texto */}
+          <div className="mb-8 flex flex-col items-center gap-4 sm:mb-12 sm:flex-row sm:gap-6">
+            <a href="/">
+              <Image
+                src="/logo.png"
+                width={200}
+                height={200}
+                alt="Cronograma Home Service"
+                className="object-contain h-24 w-24 sm:h-28 sm:w-28"
+              />
+            </a>
+            <div className="text-center sm:text-left">
+              <p className="text-base font-bold tracking-wide sm:text-lg" style={{ color: "#FFFFFF" }}>CRONOGRAMA</p>
+              <p className="text-[10px] font-light tracking-[0.25em] sm:text-xs" style={{ color: "#C9A84C" }}>Home Service</p>
+              <p className="mt-3 max-w-xs text-sm leading-relaxed" style={{ color: "#D6D3D1" }}>
                 Remodelações de alta qualidade em Lisboa e arredores. Transformamos a sua casa — no prazo e no orçamento.
               </p>
             </div>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-3 sm:gap-12">
 
             {/* Links */}
             <div>
@@ -100,7 +101,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-12 border-t border-gold/10 pt-8 text-center text-xs" style={{ color: "#D6D3D1" }}>
+          <div className="mt-8 border-t border-gold/10 pt-6 text-center text-xs sm:mt-12 sm:pt-8" style={{ color: "#D6D3D1" }}>
             &copy; {new Date().getFullYear()} Cronograma Home Service. Todos os direitos reservados.
           </div>
         </div>
