@@ -89,3 +89,18 @@ O objetivo deste projeto é construir uma máquina de conversão que transmita *
 
 ---
 **Status:** SPEC criado. Aguarda luz verde para Fase 1 (Setup do projeto).
+
+## 7. O Pitch de Venda (Como a CMTecnologia Vende este Site à Crono)
+**O nosso argumento não é 'vamos fazer um site mais bonito'. O nosso argumento é 'vamos criar um motor de aquisição de clientes que afasta os curiosos e atrai clientes de alto ticket.'**
+
+### O Que a Crono Ganha:
+- **Filtro de Curiosos:** O Smart Form qualifica a urgência e o tipo de serviço. Quem procura orçamentos irrealistas desiste aqui.
+- **Autoridade Perceptual:** Ao ver o portfolio em Sliders de Antes/Depois de luxo, o cliente associa a qualidade do site à qualidade da obra. A negociação de preços fica muito mais fácil.
+- **Canal de Venda Direto:** O site não é um catálogo, é uma ponte para o WhatsApp, enviando leads já informadas e pré-aquecidas.
+
+## 8. Front-End Focado no Consumidor (Vender Reformas, não Software)
+Tudo no ecrã existe para mitigar os medos de quem contrata empreiteiros:
+
+1. **A Dor do Atraso:** Bloco visual claro com as Etapas (Orçamento -> Proteção do Local -> Obra -> Entrega Limpa). Mostra profissionalismo e gestão rigorosa.
+2. **Medo da Burla/Abandono:** Contacto imediato e transparente, secção de garantias e fotos da equipa com fardamento (se disponível).
+3. **Facilidade de Pedido:** O cliente deve poder anexar no formulário 2 fotos do espaço que quer remodelar. O empreiteiro (Crono) já recebe a foto no WhatsApp via n8n e pode dar um valor aproximado imediatamente.
