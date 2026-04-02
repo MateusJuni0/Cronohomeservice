@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS = [
@@ -18,13 +19,14 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-baseline gap-1.5 shrink-0">
-            <span className="text-xl font-bold tracking-wide text-gold md:text-2xl">
-              CRONOGRAMA
-            </span>
-            <span className="text-sm font-light tracking-widest text-white/80 md:text-base">
-              Home Service
-            </span>
+          <a href="#" className="shrink-0">
+            <Image
+              src="/logo.png"
+              width={160}
+              height={54}
+              alt="Cronograma Home Service"
+              className="object-contain"
+            />
           </a>
 
           {/* Desktop Nav */}
