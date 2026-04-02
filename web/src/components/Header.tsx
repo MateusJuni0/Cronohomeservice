@@ -93,35 +93,72 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — fullscreen overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-gold/10 bg-[#0C0A09]/95 backdrop-blur-xl md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="fixed inset-0 top-16 z-40 flex flex-col items-center justify-center gap-2 bg-[#0C0A09]/98 backdrop-blur-2xl md:hidden"
           >
-            <div className="flex flex-col gap-1 px-4 py-4">
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-base font-medium text-[rgba(250,250,249,0.7)] transition-colors hover:text-gold"
-                >
-                  {item.label}
-                </a>
-              ))}
-              <a
-                href="#orcamento"
+            {/* Gold accent line */}
+            <motion.span
+              initial={{ width: 0 }}
+              animate={{ width: 48 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-4 block h-[2px] bg-gold"
+            />
+
+            {NAV_ITEMS.map((item, i) => (
+              <motion.a
+                key={item.href}
+                href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 gold-glow bg-gold px-4 py-3 text-center text-base font-semibold text-[#0C0A09]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, delay: 0.08 * i }}
+                className="py-3 text-center font-serif text-2xl font-light tracking-wide text-white/80 transition-colors hover:text-gold"
               >
-                Pedir Orçamento
+                {item.label}
+              </motion.a>
+            ))}
+
+            {/* Gold accent line */}
+            <motion.span
+              initial={{ width: 0 }}
+              animate={{ width: 48 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-4 mb-6 block h-[2px] bg-gold"
+            />
+
+            <motion.a
+              href="#orcamento"
+              onClick={() => setMobileOpen(false)}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: 0.45 }}
+              className="btn-gold-glass rounded-lg px-10 py-4 text-base font-semibold tracking-wide"
+            >
+              Pedir Orçamento
+            </motion.a>
+
+            {/* Contact info */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+              className="mt-8 flex flex-col items-center gap-1.5"
+            >
+              <a href="tel:+351931428476" className="text-sm text-white/40 transition-colors hover:text-gold">
+                +351 931 428 476
               </a>
-            </div>
+              <a href="mailto:grupocronograma@hotmail.com" className="text-xs text-white/30 transition-colors hover:text-gold">
+                grupocronograma@hotmail.com
+              </a>
+            </motion.div>
           </motion.nav>
         )}
       </AnimatePresence>
