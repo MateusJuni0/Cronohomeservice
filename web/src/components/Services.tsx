@@ -49,47 +49,47 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <SectionWrapper id="servicos" className="section-glass py-28">
+    <SectionWrapper id="servicos" className="section-glass py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-8 sm:p-12">
+        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
           <SectionHeader
             eyebrow="Nossos Serviços"
             title="Soluções completas para a sua casa"
             subtitle="Do projecto à entrega — cada detalhe importa."
           />
 
-          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-3 sm:mt-16 sm:gap-4 md:grid-cols-2">
             {SERVICES.map((service) => (
               <motion.div
                 key={service.title}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
-                className="glass-card group relative cursor-default overflow-hidden rounded-xl p-8"
+                className="glass-card group relative cursor-default overflow-hidden rounded-xl p-5 sm:p-8"
               >
                 {/* Watermark number */}
-                <span className="pointer-events-none absolute right-6 top-4 select-none font-serif text-[96px] leading-none text-gold/[0.06]">
+                <span className="pointer-events-none absolute right-4 top-3 select-none font-serif text-[56px] leading-none text-gold/[0.06] sm:right-6 sm:top-4 sm:text-[96px]">
                   {service.number}
                 </span>
 
                 <div className="relative">
                   {/* Icon container */}
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center border border-gold/30 text-gold transition-all duration-300 group-hover:border-gold group-hover:bg-gold/10 rounded-lg">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center border border-gold/30 text-gold transition-all duration-300 group-hover:border-gold group-hover:bg-gold/10 rounded-lg sm:mb-6 sm:h-14 sm:w-14 [&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6">
                     {service.icon}
                   </div>
 
                   {/* Title */}
-                  <h3 className="mb-3 font-serif text-2xl" style={{ color: "#FFFFFF" }}>{service.title}</h3>
+                  <h3 className="mb-2 font-serif text-lg sm:mb-3 sm:text-2xl" style={{ color: "#FFFFFF" }}>{service.title}</h3>
 
                   {/* Gold line */}
-                  <span className="mb-4 block h-[1px] w-10 bg-gold" />
+                  <span className="mb-3 block h-[1px] w-8 bg-gold sm:mb-4 sm:w-10" />
 
                   {/* Description */}
-                  <p className="mb-6 text-sm leading-relaxed text-muted">
+                  <p className="mb-4 text-xs leading-relaxed text-muted sm:mb-6 sm:text-sm">
                     {service.description}
                   </p>
 
                   {/* CTA */}
-                  <div className="flex items-center gap-2 text-sm font-medium text-gold/70 transition-all duration-300 group-hover:gap-3 group-hover:text-gold">
+                  <div className="flex items-center gap-2 text-xs font-medium text-gold/70 transition-all duration-300 group-hover:gap-3 group-hover:text-gold sm:text-sm">
                     <span>Saber mais</span>
                     <span className="inline-block">&rarr;</span>
                   </div>

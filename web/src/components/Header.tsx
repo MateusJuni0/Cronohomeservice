@@ -32,19 +32,19 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 shrink-0">
+          <a href="/" className="flex items-center gap-2 shrink-0 sm:gap-3">
             <Image
               src="/logo.png"
               width={44}
               height={44}
               alt="Cronograma Home Service"
-              className="object-contain"
+              className="object-contain h-9 w-9 sm:h-11 sm:w-11"
             />
             <div className="flex flex-col leading-tight">
-              <span className="text-base font-bold tracking-wide text-white">
+              <span className="text-sm font-bold tracking-wide text-white sm:text-base">
                 CRONOGRAMA
               </span>
-              <span className="text-[10px] font-light tracking-[0.2em] text-gold/70">
+              <span className="text-[9px] font-light tracking-[0.2em] text-gold/70 sm:text-[10px]">
                 Home Service
               </span>
             </div>

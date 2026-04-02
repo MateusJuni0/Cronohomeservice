@@ -118,15 +118,15 @@ export default function LeadForm() {
 
   if (submitted) {
     return (
-      <SectionWrapper id="orcamento" className="section-glass py-28">
+      <SectionWrapper id="orcamento" className="section-glass py-14 sm:py-28">
         <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-          <div className="glass-panel rounded-2xl p-12">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center bg-gold/20 text-gold rounded-full">
-              <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <div className="glass-panel rounded-2xl p-8 sm:p-12">
+            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center bg-gold/20 text-gold rounded-full sm:mb-6 sm:h-16 sm:w-16">
+              <svg className="h-6 w-6 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
             </div>
-            <h3 className="font-serif text-2xl text-white sm:text-3xl">Pedido Recebido!</h3>
+            <h3 className="font-serif text-xl text-white sm:text-2xl md:text-3xl">Pedido Recebido!</h3>
             <p className="mt-4 text-muted">
               Vamos analisar o seu pedido e entrar em contacto via WhatsApp nas próximas 24 horas.
             </p>
@@ -137,7 +137,7 @@ export default function LeadForm() {
   }
 
   return (
-    <SectionWrapper id="orcamento" className="section-glass py-28">
+    <SectionWrapper id="orcamento" className="section-glass py-14 sm:py-28">
       <div className="relative z-10 mx-auto max-w-2xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Orçamento Grátis"
@@ -145,7 +145,7 @@ export default function LeadForm() {
           subtitle="Responda a 4 perguntas rápidas e receba uma avaliação personalizada."
         />
 
-        <div className="mt-12 glass-panel rounded-2xl p-8">
+        <div className="mt-8 glass-panel rounded-2xl p-5 sm:mt-12 sm:p-8">
           {/* Progress bar */}
           <div className="mb-8">
             <div className="flex justify-between text-xs text-muted mb-2">
@@ -165,18 +165,18 @@ export default function LeadForm() {
             {step === 1 && (
               <motion.div key="s1" variants={STEP_VARIANTS} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
                 <h3 className="mb-6 text-lg font-semibold text-white">Que tipo de obra pretende?</h3>
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3">
                   {WORK_TYPES.map((wt) => (
                     <button
                       key={wt.value}
                       onClick={() => setFormData({ ...formData, workType: wt.value })}
-                      className={`flex flex-col items-center gap-2 border rounded-lg p-4 text-sm transition-all cursor-pointer ${
+                      className={`flex flex-col items-center gap-1.5 border rounded-lg p-3 text-xs transition-all cursor-pointer sm:gap-2 sm:p-4 sm:text-sm ${
                         formData.workType === wt.value
                           ? "border-gold bg-gold/10 text-gold"
                           : "border-white/15 text-muted hover:border-gold/40"
                       }`}
                     >
-                      <span className="text-gold">{wt.icon}</span>
+                      <span className="text-gold [&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6">{wt.icon}</span>
                       {wt.label}
                     </button>
                   ))}

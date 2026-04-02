@@ -68,12 +68,12 @@ export default function Hero() {
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#0C0A09]/60 via-[#0C0A09]/40 to-[#0C0A09]/80" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-20 text-center sm:py-32 sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mb-6 text-xs font-medium tracking-[0.3em] text-gold/80 uppercase"
+          className="mb-4 text-[10px] font-medium tracking-[0.3em] text-gold/80 uppercase sm:mb-6 sm:text-xs"
         >
           Remodelações Premium em Lisboa
         </motion.p>
@@ -82,7 +82,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-serif text-4xl font-light leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl"
+          className="font-serif text-3xl font-light leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl"
         >
           <span className="text-[rgba(250,250,249,0.95)]">Remodelações em Lisboa.</span>
           <br />
@@ -90,7 +90,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-2 inline-block text-gold"
+            className="mt-1 inline-block text-gold sm:mt-2"
           >
             No prazo. No orçamento.
           </motion.span>
@@ -100,7 +100,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="mx-auto mt-8 max-w-2xl text-lg font-light sm:text-xl" style={{ color: "rgba(250,250,249,0.80)" }}
+          className="mx-auto mt-5 max-w-2xl text-base font-light sm:mt-8 sm:text-xl" style={{ color: "rgba(250,250,249,0.80)" }}
         >
           20 anos de experiência em remodelações em Lisboa e arredores.
           Orçamento gratuito em 24h.
@@ -110,13 +110,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+          className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4"
         >
           <motion.a
             href="#orcamento"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="btn-gold-glass w-full rounded-lg px-10 py-4 text-lg font-semibold sm:w-auto"
+            className="btn-gold-glass w-full rounded-lg px-8 py-3.5 text-base font-semibold sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
           >
             Pedir Orçamento Grátis
           </motion.a>
@@ -124,25 +124,25 @@ export default function Hero() {
             href="/portfolio"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="btn-glass w-full rounded-lg px-10 py-4 text-lg font-medium sm:w-auto"
+            className="btn-glass w-full rounded-lg px-8 py-3.5 text-base font-medium sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
           >
             Ver Portfólio
           </motion.a>
         </motion.div>
 
         {/* Trust Bar */}
-        <div className="mt-20 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+        <div className="mt-12 grid grid-cols-2 gap-2.5 sm:mt-20 sm:grid-cols-4 sm:gap-6">
           {TRUST_ITEMS.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
-              className="glass-card group flex flex-col items-center gap-2 rounded-xl px-4 py-5"
+              className="glass-card group flex flex-col items-center gap-1.5 rounded-xl px-3 py-3.5 sm:gap-2 sm:px-4 sm:py-5"
             >
-              <span className="text-gold">{item.icon}</span>
-              <span className="text-sm font-semibold text-[rgba(250,250,249,0.9)]">{item.title}</span>
-              <span className="text-[11px]" style={{ color: "rgba(250,250,249,0.65)" }}>{item.subtitle}</span>
+              <span className="text-gold [&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6">{item.icon}</span>
+              <span className="text-xs font-semibold text-[rgba(250,250,249,0.9)] sm:text-sm">{item.title}</span>
+              <span className="text-[10px] sm:text-[11px]" style={{ color: "rgba(250,250,249,0.65)" }}>{item.subtitle}</span>
             </motion.div>
           ))}
         </div>

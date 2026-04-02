@@ -42,7 +42,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between py-5 text-left cursor-pointer"
       >
-        <span className="pr-4 text-base font-medium sm:text-lg" style={{ color: "#FFFFFF" }}>{question}</span>
+        <span className="pr-4 text-sm font-medium sm:text-base md:text-lg" style={{ color: "#FFFFFF" }}>{question}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
@@ -70,16 +70,16 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQ() {
   return (
-    <SectionWrapper id="duvidas" className="section-glass py-28">
+    <SectionWrapper id="duvidas" className="section-glass py-14 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-8 sm:p-12">
+        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
           <SectionHeader
             eyebrow="Dúvidas"
             title="Perguntas Frequentes"
             subtitle="Esclarecemos as dúvidas mais comuns antes de começar."
           />
 
-          <div className="mt-12">
+          <div className="mt-6 sm:mt-12">
             {FAQS.map((faq) => (
               <FAQItem key={faq.question} {...faq} />
             ))}

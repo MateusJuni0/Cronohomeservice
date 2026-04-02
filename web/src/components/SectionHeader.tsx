@@ -11,13 +11,13 @@ export default function SectionHeader({ eyebrow, title, subtitle, centered = tru
       <p className="mb-3 text-xs font-medium tracking-[0.25em] text-gold uppercase">
         {eyebrow}
       </p>
-      <h2 className="font-serif text-3xl font-light leading-tight sm:text-4xl md:text-5xl" style={{ color: "#FFFFFF" }}>
+      <h2 className="font-serif text-2xl font-light leading-tight sm:text-3xl md:text-4xl lg:text-5xl" style={{ color: "#FFFFFF" }}>
         {title}
       </h2>
-      <span className={`mt-5 mb-4 block h-[2px] w-12 bg-gold ${centered ? "mx-auto" : ""}`} />
+      <span className={`mt-3 mb-3 block h-[2px] w-10 bg-gold sm:mt-5 sm:mb-4 sm:w-12 ${centered ? "mx-auto" : ""}`} />
       {subtitle && (
         <p
-          className={`text-base ${centered ? "mx-auto max-w-xl" : "max-w-xl"}`}
+          className={`text-sm sm:text-base ${centered ? "mx-auto max-w-xl" : "max-w-xl"}`}
           style={{ color: "#D6D3D1" }}
         >
           {subtitle}

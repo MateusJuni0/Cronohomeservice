@@ -13,17 +13,17 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <SectionWrapper className="section-glass border-t border-gold/10 py-16">
+    <SectionWrapper className="section-glass border-t border-gold/10 py-10 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-8 sm:p-12">
+        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
           {/* Suppliers */}
-          <div className="mb-12 text-center">
-            <p className="mb-4 text-xs font-medium tracking-[0.3em] uppercase" style={{ color: "#D6D3D1" }}>
+          <div className="mb-8 text-center sm:mb-12">
+            <p className="mb-3 text-[10px] font-medium tracking-[0.3em] uppercase sm:mb-4 sm:text-xs" style={{ color: "#D6D3D1" }}>
               Trabalhamos com
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-10">
               {SUPPLIERS.map((s) => (
-                <span key={s} className="text-lg font-semibold transition-colors hover:text-gold" style={{ color: "#D6D3D1" }}>
+                <span key={s} className="text-sm font-semibold transition-colors hover:text-gold sm:text-lg" style={{ color: "#D6D3D1" }}>
                   {s}
                 </span>
               ))}

@@ -97,26 +97,26 @@ const PROJECTS = [
 
 export default function BeforeAfter() {
   return (
-    <SectionWrapper id="portfolio" className="section-glass py-28">
+    <SectionWrapper id="portfolio" className="section-glass py-14 sm:py-28">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-8 sm:p-12">
+        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
           <SectionHeader
             eyebrow="Portfólio"
             title="O Antes e o Depois"
             subtitle="Arraste para ver a transformação. Resultados reais de projectos concluídos."
           />
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:mt-16 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {PROJECTS.map((project) => (
               <Slider key={project.label} {...project} />
             ))}
           </div>
 
           {/* Portfolio page link */}
-          <div className="mt-12 text-center">
+          <div className="mt-8 text-center sm:mt-12">
             <a
               href="/portfolio"
-              className="btn-glass inline-flex items-center gap-3 rounded-lg px-8 py-4 text-sm font-semibold tracking-wide"
+              className="btn-glass inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-semibold tracking-wide sm:gap-3 sm:px-8 sm:py-4 sm:text-sm"
             >
               Ver Portfólio Completo
               <span>&rarr;</span>

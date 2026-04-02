@@ -98,7 +98,7 @@ export default function PortfolioPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="section-glass pt-32 pb-16">
+        <section className="section-glass pt-24 pb-10 sm:pt-32 sm:pb-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
               eyebrow="Portfólio Completo"
@@ -109,10 +109,10 @@ export default function PortfolioPage() {
         </section>
 
         {/* Before/After Grid */}
-        <section className="section-glass pb-28">
+        <section className="section-glass pb-14 sm:pb-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="glass-panel rounded-2xl p-6 sm:p-10">
-              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="glass-panel rounded-2xl p-4 sm:p-6 md:p-10">
+              <div className="grid gap-5 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {PORTFOLIO_PROJECTS.map((project) => (
                   <Slider key={project.label} before={project.before} after={project.after} label={project.label} />
                 ))}
@@ -121,40 +121,40 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        {/* Infinite Menu Section */}
-        <section className="section-glass py-28">
+        {/* Infinite Menu Section — hidden on small mobile, shown on sm+ */}
+        <section className="section-glass hidden py-14 sm:block sm:py-28">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <SectionHeader
               eyebrow="Explorar"
               title="Galeria Interactiva 3D"
               subtitle="Rode a esfera para explorar todos os nossos projectos."
             />
-            <div className="mt-12 glass-panel rounded-2xl overflow-hidden" style={{ height: "600px" }}>
+            <div className="mt-8 glass-panel rounded-2xl overflow-hidden sm:mt-12" style={{ height: "500px" }}>
               <InfiniteMenu items={INFINITE_MENU_ITEMS} />
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="section-glass pb-28">
+        <section className="section-glass pb-14 sm:pb-28">
           <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
-            <div className="glass-panel rounded-2xl p-12">
-              <h3 className="font-serif text-2xl sm:text-3xl" style={{ color: "#FFFFFF" }}>
+            <div className="glass-panel rounded-2xl p-6 sm:p-12">
+              <h3 className="font-serif text-xl sm:text-2xl md:text-3xl" style={{ color: "#FFFFFF" }}>
                 Gostou do que viu?
               </h3>
-              <p className="mt-4" style={{ color: "#D6D3D1" }}>
+              <p className="mt-3 text-sm sm:mt-4 sm:text-base" style={{ color: "#D6D3D1" }}>
                 Peça o seu orçamento gratuito e transforme a sua casa.
               </p>
-              <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <div className="mt-6 flex flex-col items-center gap-3 sm:mt-8 sm:flex-row sm:justify-center sm:gap-4">
                 <a
                   href="/#orcamento"
-                  className="btn-gold-glass rounded-lg px-10 py-4 text-lg font-semibold"
+                  className="btn-gold-glass w-full rounded-lg px-8 py-3.5 text-base font-semibold sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
                 >
                   Pedir Orçamento Grátis
                 </a>
                 <a
                   href="/"
-                  className="btn-glass rounded-lg px-10 py-4 text-lg font-medium"
+                  className="btn-glass w-full rounded-lg px-8 py-3.5 text-base font-medium sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
                 >
                   &larr; Voltar ao Site
                 </a>
