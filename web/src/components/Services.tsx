@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
+import SectionHeader from "./SectionHeader";
 
 const SERVICES = [
   {
-    number: "01",
     title: "Remodelação Geral",
     description: "Transformação completa de espaços — do chão ao teto, chave na mão.",
     icon: (
@@ -15,7 +15,6 @@ const SERVICES = [
     ),
   },
   {
-    number: "02",
     title: "Instalações",
     description: "Canalização, electricidade e gás — certificados e dentro da lei.",
     icon: (
@@ -25,7 +24,6 @@ const SERVICES = [
     ),
   },
   {
-    number: "03",
     title: "Pintura e Acabamentos",
     description: "Acabamento impecável com tintas premium e técnicas profissionais.",
     icon: (
@@ -35,7 +33,6 @@ const SERVICES = [
     ),
   },
   {
-    number: "04",
     title: "Decoração de Interiores",
     description: "Design de interiores personalizado que reflecte o seu estilo de vida.",
     icon: (
@@ -48,48 +45,52 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <SectionWrapper id="servicos" className="bg-navy py-28">
+    <SectionWrapper id="servicos" className="bg-dots py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="mb-3 text-xs font-medium tracking-[0.3em] text-gold/60 uppercase">
-            O que fazemos
-          </p>
-          <h2 className="font-serif text-3xl font-light text-white sm:text-4xl md:text-5xl">
-            Os Nossos <span className="text-gold">Serviços</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-white/40">
-            Soluções completas para transformar a sua casa — do projecto à entrega.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Nossos Serviços"
+          title="Soluções completas para a sua casa"
+          subtitle="Do projecto à entrega — cada detalhe importa."
+        />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((service) => (
+        <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden bg-gold/10 sm:grid-cols-2 lg:grid-cols-4">
+          {SERVICES.map((service, i) => (
             <motion.div
               key={service.title}
-              whileHover={{ y: -4, boxShadow: "0 4px 20px rgba(201, 168, 76, 0.15)" }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group relative overflow-hidden rounded-lg border border-gold/20 bg-gradient-to-br from-[#0d1f3c] to-[#0B1628] p-8 transition-colors hover:border-gold/50"
+              whileHover={{ backgroundColor: "rgba(17, 29, 50, 1)" }}
+              transition={{ duration: 0.3 }}
+              className="group relative cursor-default overflow-hidden bg-[#080E1A] p-8"
             >
               {/* Watermark number */}
-              <span className="pointer-events-none absolute -right-2 -top-4 select-none text-8xl font-bold leading-none text-gold/[0.04]">
-                {service.number}
-              </span>
+              <div className="pointer-events-none absolute right-4 top-4 select-none text-[120px] font-bold leading-none text-gold/[0.04]">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+
+              {/* Gold line animated on hover */}
+              <div className="absolute left-0 top-0 h-[2px] w-0 bg-gold transition-all duration-500 group-hover:w-full" />
 
               <div className="relative">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg border border-gold/20 bg-gold/5 text-gold">
+                {/* Icon container */}
+                <div className="mb-6 flex h-14 w-14 items-center justify-center border border-gold/30 text-gold transition-all duration-300 group-hover:border-gold/80 group-hover:bg-gold/10">
                   {service.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-white">{service.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/45">
+
+                <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                <p className="mb-6 mt-3 text-sm leading-relaxed text-muted">
                   {service.description}
                 </p>
-                <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-gold/70 transition-colors group-hover:text-gold">
-                  Saber mais
-                  <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </span>
+
+                {/* CTA */}
+                <div className="flex items-center gap-2 text-sm font-medium text-gold">
+                  <span>Saber mais</span>
+                  <motion.span
+                    className="inline-block"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    →
+                  </motion.span>
+                </div>
               </div>
             </motion.div>
           ))}

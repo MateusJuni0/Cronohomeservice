@@ -12,16 +12,16 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <SectionWrapper className="border-t border-white/5 bg-navy-900 py-16">
+    <SectionWrapper className="border-t border-white/5 bg-[#060B14] py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Suppliers */}
         <div className="mb-12 text-center">
-          <p className="mb-4 text-xs font-medium tracking-[0.3em] text-white/30 uppercase">
+          <p className="mb-4 text-xs font-medium tracking-[0.3em] text-white/25 uppercase">
             Trabalhamos com
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
             {SUPPLIERS.map((s) => (
-              <span key={s} className="text-lg font-semibold text-white/15 transition-colors hover:text-white/30">
+              <span key={s} className="text-lg font-semibold text-white/10 transition-colors hover:text-white/25">
                 {s}
               </span>
             ))}
@@ -44,20 +44,20 @@ export default function Footer() {
                 <span className="text-[9px] font-light tracking-[0.2em] text-gold/40">Home Service</span>
               </div>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-white/35">
+            <p className="mt-4 text-sm leading-relaxed text-white/30">
               Remodelações de alta qualidade em Lisboa e arredores. Transformamos a sua casa — no prazo e no orçamento.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">
+            <h4 className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/35 uppercase">
               Navegação
             </h4>
             <ul className="space-y-2.5">
               {LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-sm text-white/35 transition-colors hover:text-gold">
+                  <a href={link.href} className="text-sm text-white/30 transition-colors hover:text-gold">
                     {link.label}
                   </a>
                 </li>
@@ -67,10 +67,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">
+            <h4 className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/35 uppercase">
               Contactos
             </h4>
-            <ul className="space-y-2.5 text-sm text-white/35">
+            <ul className="space-y-2.5 text-sm text-white/30">
               <li>+351 912 345 678</li>
               <li>info@cronohomeservice.pt</li>
               <li>Lisboa, Portugal</li>
@@ -79,10 +79,10 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/40 uppercase">
+            <h4 className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/35 uppercase">
               Legal
             </h4>
-            <ul className="space-y-2.5 text-sm text-white/35">
+            <ul className="space-y-2.5 text-sm text-white/30">
               <li>NIF: XXXXXXXXX</li>
               <li>Alvará: XXXXXX</li>
               <li>Política de Privacidade</li>
@@ -91,7 +91,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/5 pt-8 text-center text-xs text-white/20">
+        <div className="mt-12 border-t border-white/5 pt-8 text-center text-xs text-white/15">
           &copy; {new Date().getFullYear()} Cronograma Home Service. Todos os direitos reservados.
         </div>
       </div>

@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy: #0B1628;
-  --color-navy-light: #0d1f3c;
-  --color-navy-900: #060e1a;
+  --color-base: #080E1A;
+  --color-surface: #0D1526;
+  --color-elevated: #111D32;
   --color-gold: #C9A84C;
   --color-gold-light: #E8C96A;
+  --color-gold-dim: rgba(201, 168, 76, 0.15);
   --color-cream: #F5F0E8;
-  --color-white: #FFFFFF;
+  --color-white: #F8F6F1;
+  --color-muted: rgba(248, 246, 241, 0.55);
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-cormorant);
 }
@@ -17,7 +19,7 @@ html {
 }
 
 body {
-  background: var(--color-navy);
+  background: var(--color-base);
   color: var(--color-white);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
@@ -57,6 +59,45 @@ body {
 .gold-glow:hover {
   box-shadow: 0 0 40px rgba(201, 168, 76, 0.4);
   filter: brightness(1.1);
+}
+
+/* Section backgrounds */
+.bg-dots {
+  background-color: #080E1A;
+  background-image: radial-gradient(circle, rgba(201, 168, 76, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-spotlight {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 70%), #080E1A;
+}
+
+.bg-diagonals {
+  background-color: #0D1526;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(201, 168, 76, 0.03) 40px,
+    rgba(201, 168, 76, 0.03) 41px
+  );
+}
+
+.bg-glows {
+  background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
+    #080E1A;
+}
+
+.bg-form-gradient {
+  background: linear-gradient(180deg, #080E1A 0%, #0D1526 50%, #080E1A 100%);
+}
+
+.bg-mesh {
+  background-color: #080E1A;
+  background-image: linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 /* Custom cursor dot (desktop only) */

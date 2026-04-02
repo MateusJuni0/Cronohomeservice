@@ -53,18 +53,16 @@ export default function Hero() {
         priority
         className="object-cover"
       />
-      {/* Gradient overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B1628]/90 via-[#0B1628]/70 to-[#0B1628]/40" />
-      {/* Extra bottom fade for transition to next section */}
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0B1628] to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080E1A]/90 via-[#080E1A]/70 to-[#080E1A]/40" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#080E1A] to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-32 text-center sm:px-6 lg:px-8">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0 }}
-          className="mb-6 text-sm font-medium tracking-[0.3em] text-gold/80 uppercase"
+          transition={{ duration: 0.7 }}
+          className="mb-6 text-xs font-medium tracking-[0.3em] text-gold/80 uppercase"
         >
           Remodelações Premium em Lisboa
         </motion.p>
@@ -91,7 +89,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="mx-auto mt-8 max-w-2xl text-lg font-light text-white/50 sm:text-xl"
+          className="mx-auto mt-8 max-w-2xl text-lg font-light text-muted sm:text-xl"
         >
           20 anos de experiência em remodelações em Lisboa e arredores.
           Orçamento gratuito em 24h.
@@ -107,7 +105,7 @@ export default function Hero() {
             href="#orcamento"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="gold-glow w-full bg-gold px-10 py-4 text-lg font-semibold text-navy sm:w-auto"
+            className="gold-glow w-full bg-gold px-10 py-4 text-lg font-semibold text-[#080E1A] sm:w-auto"
           >
             Pedir Orçamento Grátis
           </motion.a>
@@ -129,12 +127,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
-              whileHover={{ borderColor: "rgba(201, 168, 76, 0.3)", backgroundColor: "rgba(255,255,255,0.08)" }}
-              className="flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-5 backdrop-blur-sm transition-all"
+              className="group flex flex-col items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-5 backdrop-blur-sm transition-all duration-300 hover:border-gold/30 hover:bg-white/[0.08]"
             >
               <span className="text-gold">{item.icon}</span>
               <span className="text-sm font-semibold text-white">{item.title}</span>
-              <span className="text-[11px] text-white/40">{item.subtitle}</span>
+              <span className="text-[11px] text-muted">{item.subtitle}</span>
             </motion.div>
           ))}
         </div>

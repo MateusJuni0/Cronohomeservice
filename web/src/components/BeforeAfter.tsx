@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import SectionWrapper from "./SectionWrapper";
+import SectionHeader from "./SectionHeader";
 
 interface SliderProps {
   before: string;
@@ -51,37 +52,27 @@ function Slider({ before, after, label }: SliderProps) {
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        className="before-after-slider relative aspect-[4/3] w-full cursor-ew-resize overflow-hidden rounded-lg"
+        className="before-after-slider relative aspect-[4/3] w-full cursor-ew-resize overflow-hidden rounded-lg border border-white/10"
       >
-        {/* After (full background) */}
         <Image src={after} alt="Depois" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
-
-        {/* Before (clipped) */}
         <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
           <Image src={before} alt="Antes" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
         </div>
-
-        {/* Divider line */}
-        <div
-          className="absolute top-0 bottom-0 z-10 w-0.5 bg-gold"
-          style={{ left: `${position}%` }}
-        >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold bg-navy/80">
+        <div className="absolute top-0 bottom-0 z-10 w-0.5 bg-gold" style={{ left: `${position}%` }}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold bg-[#080E1A]/80">
             <svg className="h-5 w-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3" />
             </svg>
           </div>
         </div>
-
-        {/* Labels */}
-        <span className="absolute top-3 left-3 z-10 rounded bg-navy/70 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+        <span className="absolute top-3 left-3 z-10 bg-[#080E1A]/70 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm">
           ANTES
         </span>
-        <span className="absolute top-3 right-3 z-10 rounded bg-gold/80 px-2 py-1 text-xs font-semibold text-navy backdrop-blur-sm">
+        <span className="absolute top-3 right-3 z-10 bg-gold/80 px-2 py-1 text-xs font-semibold text-[#080E1A] backdrop-blur-sm">
           DEPOIS
         </span>
       </div>
-      <p className="text-sm text-white/50">{label}</p>
+      <p className="text-sm text-muted">{label}</p>
     </div>
   );
 }
@@ -106,16 +97,13 @@ const PROJECTS = [
 
 export default function BeforeAfter() {
   return (
-    <SectionWrapper id="portfolio" className="bg-navy-light py-24">
+    <SectionWrapper id="portfolio" className="bg-spotlight py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="font-serif text-3xl font-light text-white sm:text-4xl md:text-5xl">
-            O Antes e o <span className="text-gold">Depois</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/60">
-            Arraste para ver a transformação. Resultados reais de projectos concluídos.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Portfólio"
+          title="O Antes e o Depois"
+          subtitle="Arraste para ver a transformação. Resultados reais de projectos concluídos."
+        />
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project) => (

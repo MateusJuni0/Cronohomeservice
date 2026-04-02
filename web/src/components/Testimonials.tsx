@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
+import SectionHeader from "./SectionHeader";
 
 const TESTIMONIALS = [
   {
@@ -26,28 +27,28 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <SectionWrapper className="bg-navy-light py-24">
+    <SectionWrapper className="bg-glows py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="font-serif text-3xl font-light text-white sm:text-4xl md:text-5xl">
-            O que dizem os nossos <span className="text-gold">clientes</span>
-          </h2>
-        </div>
+        <SectionHeader
+          eyebrow="Testemunhos"
+          title="O que dizem os nossos clientes"
+        />
 
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t) => (
             <motion.div
               key={t.name}
-              whileHover={{ y: -4 }}
-              className="rounded-lg border border-white/10 bg-navy p-8"
+              whileHover={{ y: -4, borderColor: "rgba(201, 168, 76, 0.3)" }}
+              transition={{ duration: 0.3 }}
+              className="border border-white/10 bg-surface p-8"
             >
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold text-sm font-bold text-navy">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-gold text-sm font-bold text-[#080E1A]">
                   {t.initials}
                 </div>
                 <div>
                   <p className="font-semibold text-white">{t.name}</p>
-                  <p className="text-sm text-white/50">{t.location}</p>
+                  <p className="text-sm text-muted">{t.location}</p>
                 </div>
               </div>
               <p className="mt-6 text-sm leading-relaxed text-white/70 italic">

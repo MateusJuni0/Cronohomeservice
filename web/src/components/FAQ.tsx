@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
+import SectionHeader from "./SectionHeader";
 
 const FAQS = [
   {
@@ -59,7 +60,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm leading-relaxed text-white/60">{answer}</p>
+            <p className="pb-5 text-sm leading-relaxed text-muted">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -69,16 +70,13 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQ() {
   return (
-    <SectionWrapper className="bg-navy-light py-24">
+    <SectionWrapper className="bg-mesh py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="font-serif text-3xl font-light text-white sm:text-4xl md:text-5xl">
-            Perguntas <span className="text-gold">Frequentes</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/60">
-            Esclarecemos as dúvidas mais comuns antes de começar.
-          </p>
-        </div>
+        <SectionHeader
+          eyebrow="Dúvidas"
+          title="Perguntas Frequentes"
+          subtitle="Esclarecemos as dúvidas mais comuns antes de começar."
+        />
 
         <div className="mt-12">
           {FAQS.map((faq) => (
