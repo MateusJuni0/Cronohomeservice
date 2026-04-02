@@ -82,18 +82,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-serif text-4xl font-light leading-[1.1] text-[rgba(250,250,249,0.95)] sm:text-5xl md:text-6xl lg:text-7xl"
+          className="font-serif text-4xl font-light leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          Transformamos a sua casa.
-        </motion.h1>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-2 font-serif text-4xl font-light leading-[1.1] text-gold sm:text-5xl md:text-6xl lg:text-7xl"
-        >
-          No prazo. No orçamento.
+          <span className="text-[rgba(250,250,249,0.95)]">Remodelações em Lisboa.</span>
+          <br />
+          <motion.span
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-2 inline-block text-gold"
+          >
+            No prazo. No orçamento.
+          </motion.span>
         </motion.h1>
 
         <motion.p
