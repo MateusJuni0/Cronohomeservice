@@ -2,12 +2,13 @@
 
 @theme inline {
   --color-navy: #0B1628;
-  --color-navy-light: #132240;
+  --color-navy-light: #0d1f3c;
+  --color-navy-900: #060e1a;
   --color-gold: #C9A84C;
-  --color-gold-light: #D4B96A;
-  --color-cream: #F5F5F3;
+  --color-gold-light: #E8C96A;
+  --color-cream: #F5F0E8;
   --color-white: #FFFFFF;
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-cormorant);
 }
 
@@ -21,8 +22,60 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Nav link animated underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
 /* Before/After Slider */
 .before-after-slider {
   touch-action: none;
   user-select: none;
+}
+
+/* Gold glow for primary buttons */
+.gold-glow {
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.25);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.gold-glow:hover {
+  box-shadow: 0 0 40px rgba(201, 168, 76, 0.4);
+  filter: brightness(1.1);
+}
+
+/* Custom cursor dot (desktop only) */
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease-out;
+}
+
+@media (pointer: coarse) {
+  .cursor-dot {
+    display: none;
+  }
 }

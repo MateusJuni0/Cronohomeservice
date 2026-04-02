@@ -7,10 +7,12 @@ import Testimonials from "@/components/Testimonials";
 import LeadForm from "@/components/LeadForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import CursorDot from "@/components/CursorDot";
 
 export default function Home() {
   return (
     <>
+      <CursorDot />
       <Header />
       <main>
         <Hero />
