@@ -37,16 +37,19 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-white/10">
+    <div style={{ borderBottom: "1px solid rgba(26,19,10,0.10)" }}>
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between py-5 text-left cursor-pointer"
       >
-        <span className="pr-4 text-sm font-medium sm:text-base md:text-lg" style={{ color: "#FFFFFF" }}>{question}</span>
+        <span className="pr-4 text-sm font-medium sm:text-base md:text-lg" style={{ color: "#1a130a" }}>
+          {question}
+        </span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.2 }}
-          className="shrink-0 text-2xl text-gold"
+          className="shrink-0 text-2xl"
+          style={{ color: "#E67E22" }}
         >
           +
         </motion.span>
@@ -60,7 +63,12 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm leading-relaxed text-muted">{answer}</p>
+            <p
+              className="pb-5 text-sm leading-relaxed"
+              style={{ color: "rgba(26,19,10,0.60)" }}
+            >
+              {answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -70,20 +78,19 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQ() {
   return (
-    <SectionWrapper id="duvidas" className="section-glass py-14 sm:py-28">
+    <SectionWrapper id="duvidas" className="section-light py-14 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
-          <SectionHeader
-            eyebrow="Dúvidas"
-            title="Perguntas Frequentes"
-            subtitle="Esclarecemos as dúvidas mais comuns antes de começar."
-          />
+        <SectionHeader
+          eyebrow="Dúvidas"
+          title="Perguntas Frequentes"
+          subtitle="Esclarecemos as dúvidas mais comuns antes de começar."
+          inverted
+        />
 
-          <div className="mt-6 sm:mt-12">
-            {FAQS.map((faq) => (
-              <FAQItem key={faq.question} {...faq} />
-            ))}
-          </div>
+        <div className="mt-6 sm:mt-12">
+          {FAQS.map((faq) => (
+            <FAQItem key={faq.question} {...faq} />
+          ))}
         </div>
       </div>
     </SectionWrapper>
