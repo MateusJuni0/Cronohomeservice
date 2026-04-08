@@ -8,42 +8,21 @@ const STEPS = [
     number: "01",
     title: "Visita e Diagnóstico",
     description: "Avaliámos o espaço gratuitamente e ouvimos as suas necessidades.",
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-      </svg>
-    ),
   },
   {
     number: "02",
     title: "Orçamento Fixo",
     description: "Preço fechado, sem surpresas. Sabe exactamente quanto vai investir.",
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-      </svg>
-    ),
   },
   {
     number: "03",
     title: "Obra com Gestão Dedicada",
     description: "Um gestor único, actualizações diárias por WhatsApp. Zero stress.",
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
-      </svg>
-    ),
   },
   {
     number: "04",
     title: "Entrega e Garantia",
     description: "Limpeza final incluída, garantia de 5 anos em todas as intervenções.",
-    icon: (
-      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-      </svg>
-    ),
   },
 ];
 
@@ -55,10 +34,8 @@ export default function Method() {
           eyebrow="O Método"
           title="Do contacto à entrega da chave"
           subtitle="Sem surpresas, sem caos. 4 passos para a sua casa nova."
-          inverted
         />
 
-        {/* Timeline vertical */}
         <div className="relative mt-8 sm:mt-16">
           {/* Connector line */}
           <div
@@ -67,50 +44,21 @@ export default function Method() {
           />
 
           {STEPS.map((step, i) => (
-            <div
-              key={step.number}
-              className={`relative flex gap-4 sm:gap-6 ${i < STEPS.length - 1 ? "mb-6 sm:mb-10" : ""}`}
-            >
-              {/* Number box */}
+            <div key={step.number} className={`relative flex gap-4 sm:gap-6 ${i < STEPS.length - 1 ? "mb-6 sm:mb-10" : ""}`}>
               <div
-                className="z-10 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-white shadow-sm sm:h-14 sm:w-14"
-                style={{ border: "1px solid rgba(230,126,34,0.25)" }}
+                className="z-10 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg backdrop-blur-md sm:h-14 sm:w-14"
+                style={{ border: "1px solid rgba(230,126,34,0.30)", background: "rgba(230,126,34,0.10)" }}
               >
-                <span
-                  className="font-serif text-base sm:text-lg"
-                  style={{ color: "#E67E22" }}
-                >
+                <span className="font-serif text-base sm:text-lg" style={{ color: "#E67E22" }}>
                   {step.number}
                 </span>
               </div>
 
-              {/* Content */}
-              <div
-                className={`flex-1 pt-1 sm:pt-2 ${
-                  i < STEPS.length - 1
-                    ? "border-b pb-5 sm:pb-8"
-                    : ""
-                }`}
-                style={{ borderColor: "rgba(26,19,10,0.08)" }}
-              >
-                <div className="mb-1.5 flex items-center gap-2 sm:mb-2 sm:gap-3">
-                  <span
-                    className="[&>svg]:h-4 [&>svg]:w-4 sm:[&>svg]:h-5 sm:[&>svg]:w-5"
-                    style={{ color: "#E67E22" }}
-                  >
-                    {step.icon}
-                  </span>
-                  <h3
-                    className="font-serif text-base sm:text-xl"
-                    style={{ color: "#1a130a" }}
-                  >
-                    {step.title}
-                  </h3>
-                </div>
-                <p
-                  className="text-xs leading-relaxed sm:text-sm"
-                  style={{ color: "rgba(26,19,10,0.60)" }}
-                >
+              <div className={`flex-1 pt-1 sm:pt-2 ${i < STEPS.length - 1 ? "border-b border-white/10 pb-5 sm:pb-8" : ""}`}>
+                <h3 className="mb-1.5 font-serif text-base text-white sm:mb-2 sm:text-xl">
+                  {step.title}
+                </h3>
+                <p className="text-xs leading-relaxed text-muted sm:text-sm">
                   {step.description}
                 </p>
               </div>
@@ -118,16 +66,10 @@ export default function Method() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="mt-8 text-center sm:mt-14">
           <a
             href="#orcamento"
-            className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-semibold transition-all hover:shadow-md sm:px-6 sm:py-3 sm:text-sm"
-            style={{
-              background: "#E67E22",
-              color: "#fff",
-              boxShadow: "0 4px 16px rgba(230,126,34,0.25)",
-            }}
+            className="btn-orange inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-semibold sm:px-6 sm:py-3 sm:text-sm"
           >
             Pronto para começar? <span>&rarr;</span> Pedir orçamento
           </a>

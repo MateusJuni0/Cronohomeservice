@@ -47,10 +47,10 @@ body::before {
   background-attachment: fixed;
 }
 
-/* ── SECTION VARIANTS — semi-transparent over the fixed photo bg ── */
-.section-light { background: rgba(245, 242, 238, 0.93); }
-.section-warm  { background: rgba(236, 232, 225, 0.93); }
-.section-dark  { background: rgba(18, 16, 14, 0.90); }
+/* ── SECTION VARIANTS — dark overlays so blueprint always shows through ── */
+.section-light { background: rgba(18, 16, 14, 0.82); }
+.section-warm  { background: rgba(18, 16, 14, 0.78); }
+.section-dark  { background: rgba(18, 16, 14, 0.88); }
 
 /* ── ORANGE BUTTONS ── */
 .btn-orange {

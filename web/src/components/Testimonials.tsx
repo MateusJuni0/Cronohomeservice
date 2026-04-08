@@ -32,7 +32,6 @@ export default function Testimonials() {
         <SectionHeader
           eyebrow="Testemunhos"
           title="O que dizem os nossos clientes"
-          inverted
         />
 
         <div className="mt-8 grid gap-4 sm:mt-16 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -44,37 +43,26 @@ export default function Testimonials() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -4 }}
-              className="light-card rounded-xl p-5 sm:p-8"
+              className="glass-card rounded-xl p-5 sm:p-8"
             >
-              {/* Decorative quote */}
-              <span
-                className="block font-serif text-3xl leading-none sm:text-5xl"
-                style={{ color: "rgba(230,126,34,0.20)" }}
-              >
+              <span className="block font-serif text-3xl leading-none sm:text-5xl" style={{ color: "rgba(230,126,34,0.25)" }}>
                 &ldquo;
               </span>
 
-              <p
-                className="mt-1.5 text-xs leading-relaxed italic sm:mt-2 sm:text-sm"
-                style={{ color: "rgba(26,19,10,0.70)" }}
-              >
+              <p className="mt-1.5 text-xs leading-relaxed italic text-muted sm:mt-2 sm:text-sm">
                 {t.text}
               </p>
 
               <div className="mt-4 flex items-center gap-3 sm:mt-6 sm:gap-4">
                 <div
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-xs font-bold text-white sm:h-12 sm:w-12 sm:text-sm"
-                  style={{ background: "#E67E22" }}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-xs font-bold sm:h-12 sm:w-12 sm:text-sm"
+                  style={{ background: "#E67E22", color: "#fff" }}
                 >
                   {t.initials}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold sm:text-base" style={{ color: "#1a130a" }}>
-                    {t.name}
-                  </p>
-                  <p className="text-xs sm:text-sm" style={{ color: "rgba(26,19,10,0.50)" }}>
-                    {t.location}
-                  </p>
+                  <p className="text-sm font-semibold text-white sm:text-base">{t.name}</p>
+                  <p className="text-xs text-muted sm:text-sm">{t.location}</p>
                 </div>
               </div>
 
