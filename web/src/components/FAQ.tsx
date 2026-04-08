@@ -32,12 +32,15 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-white/10">
+    <div className="glass-card rounded-xl mb-3 sm:mb-4">
       <button onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between py-5 text-left cursor-pointer">
-        <span className="pr-4 text-sm font-medium text-white sm:text-base md:text-lg">{question}</span>
+        className="flex w-full items-center justify-between p-4 text-left cursor-pointer sm:p-5">
+        <span className="pr-4 text-sm font-semibold sm:text-base md:text-lg" style={{ color: "#E67E22" }}>
+          {question}
+        </span>
         <motion.span animate={{ rotate: open ? 45 : 0 }} transition={{ duration: 0.2 }}
-          className="shrink-0 text-2xl" style={{ color: "#E67E22" }}>
+          className="shrink-0 flex h-8 w-8 items-center justify-center rounded-full text-lg font-bold"
+          style={{ background: "rgba(230,126,34,0.15)", color: "#E67E22" }}>
           +
         </motion.span>
       </button>
@@ -45,7 +48,9 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         {open && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-            <p className="pb-5 text-sm leading-relaxed text-muted">{answer}</p>
+            <p className="px-4 pb-5 text-sm leading-relaxed text-white/70 sm:px-5 sm:text-base">
+              {answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -63,7 +68,7 @@ export default function FAQ() {
           subtitle="Esclarecemos as dúvidas mais comuns antes de começar."
         />
 
-        <div className="mt-6 sm:mt-12">
+        <div className="mt-8 sm:mt-12">
           {FAQS.map((faq) => (
             <FAQItem key={faq.question} {...faq} />
           ))}
