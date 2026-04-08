@@ -1,14 +1,24 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── DARK STONE PALETTE — ZERO WHITE ── */
-  --color-base: #0C0A09;
-  --color-surface: #1C1917;
+  /* ── DARK STONE PALETTE ── */
+  --color-base: #12100e;
+  --color-surface: #1e1a14;
   --color-elevated: #292524;
   --color-gold: #C9A84C;
   --color-gold-light: #E8C96A;
   --color-gold-dim: rgba(201, 168, 76, 0.15);
   --color-gold-dark: #92792C;
+  /* ── ORANGE — nova cor primária ── */
+  --color-orange: #E67E22;
+  --color-orange-light: #F39C12;
+  --color-orange-dim: rgba(230, 126, 34, 0.15);
+  --color-orange-glow: rgba(230, 126, 34, 0.35);
+  /* ── LIGHT SECTIONS ── */
+  --color-section-light: #f5f2ee;
+  --color-section-warm: #ece8e1;
+  --color-text-dark: #1a130a;
+  --color-muted-dark: rgba(26, 19, 10, 0.55);
   --color-stone-900: #1C1917;
   --color-stone-600: #57534E;
   --font-sans: var(--font-dm-sans);
@@ -23,6 +33,35 @@ body {
   background: var(--color-base);
   color: #FFFFFF;
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ── FIXED FULL-PAGE BACKGROUND ── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ── SECTION VARIANTS — semi-transparent over the fixed photo bg ── */
+.section-light { background: rgba(245, 242, 238, 0.93); }
+.section-warm  { background: rgba(236, 232, 225, 0.93); }
+.section-dark  { background: rgba(18, 16, 14, 0.90); }
+
+/* ── ORANGE BUTTONS ── */
+.btn-orange {
+  background: var(--color-orange);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(230, 126, 34, 0.3);
+  transition: all 0.25s ease;
+}
+.btn-orange:hover {
+  box-shadow: 0 8px 32px rgba(230, 126, 34, 0.5);
+  transform: translateY(-1px);
 }
 
 /* ── MUTED TEXT — light for glass panels ── */
@@ -42,7 +81,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-gold);
+  background: var(--color-orange);
   transition: width 0.3s ease;
 }
 
@@ -56,15 +95,15 @@ body {
   user-select: none;
 }
 
-/* ── GOLD GLOW (buttons) ── */
+/* ── ORANGE GLOW (buttons) ── */
 .gold-glow {
-  box-shadow: 0 0 30px rgba(201, 168, 76, 0.25);
+  box-shadow: 0 0 30px rgba(230, 126, 34, 0.25);
   text-shadow: none;
   transition: box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .gold-glow:hover {
-  box-shadow: 0 0 40px rgba(201, 168, 76, 0.4);
+  box-shadow: 0 0 40px rgba(230, 126, 34, 0.4);
   filter: brightness(1.1);
 }
 
@@ -78,7 +117,7 @@ body {
   );
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(201, 168, 76, 0.18);
+  border: 1px solid rgba(230, 126, 34, 0.18);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     inset 0 -1px 0 rgba(0, 0, 0, 0.08),
@@ -94,7 +133,7 @@ body {
   );
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(230, 126, 34, 0.12);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 4px 16px rgba(0, 0, 0, 0.10);
@@ -117,16 +156,31 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(201, 168, 76, 0.30);
+  border-color: rgba(230, 126, 34, 0.30);
   background: linear-gradient(
     155deg,
     rgba(12, 10, 9, 0.30) 0%,
-    rgba(201, 168, 76, 0.05) 50%,
+    rgba(230, 126, 34, 0.05) 50%,
     rgba(12, 10, 9, 0.32) 100%
   );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 8px 32px rgba(201, 168, 76, 0.08);
+    0 8px 32px rgba(230, 126, 34, 0.08);
+}
+
+/* ── LIGHT CARDS (for section-light / section-warm) ── */
+.light-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 24px rgba(26, 19, 10, 0.08);
+  transition: all 0.3s ease;
+}
+
+.light-card:hover {
+  box-shadow: 0 8px 32px rgba(26, 19, 10, 0.12);
+  border-color: rgba(230, 126, 34, 0.2);
 }
 
 /* ── GLASS BUTTONS ── */
@@ -134,34 +188,34 @@ body {
   background: linear-gradient(165deg, rgba(12, 10, 9, 0.30) 0%, rgba(12, 10, 9, 0.22) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.35);
-  color: var(--color-gold);
+  border: 1px solid rgba(230, 126, 34, 0.35);
+  color: var(--color-orange);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   transition: all 0.3s ease;
 }
 
 .btn-glass:hover {
-  background: linear-gradient(165deg, rgba(12, 10, 9, 0.38) 0%, rgba(201, 168, 76, 0.08) 100%);
-  border-color: rgba(201, 168, 76, 0.55);
+  background: linear-gradient(165deg, rgba(12, 10, 9, 0.38) 0%, rgba(230, 126, 34, 0.08) 100%);
+  border-color: rgba(230, 126, 34, 0.55);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 24px rgba(201, 168, 76, 0.15);
+    0 0 24px rgba(230, 126, 34, 0.15);
 }
 
 .btn-gold-glass {
-  background: linear-gradient(135deg, rgba(201, 168, 76, 0.85), rgba(232, 201, 106, 0.9));
+  background: linear-gradient(135deg, rgba(230, 126, 34, 0.90), rgba(243, 156, 18, 0.95));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(201, 168, 76, 0.6);
-  color: #0C0A09;
-  box-shadow: 0 0 25px rgba(201, 168, 76, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(230, 126, 34, 0.6);
+  color: #fff;
+  box-shadow: 0 0 25px rgba(230, 126, 34, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   text-shadow: none;
   transition: all 0.3s ease;
 }
 
 .btn-gold-glass:hover {
-  background: linear-gradient(135deg, rgba(232, 201, 106, 0.95), rgba(201, 168, 76, 0.95));
-  box-shadow: 0 0 40px rgba(201, 168, 76, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.98), rgba(230, 126, 34, 0.98));
+  box-shadow: 0 0 40px rgba(230, 126, 34, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* ── NOISE TEXTURE (premium depth on dark sections) ── */

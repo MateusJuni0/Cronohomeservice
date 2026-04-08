@@ -52,23 +52,40 @@ function Slider({ before, after, label }: SliderProps) {
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
-        className="before-after-slider relative aspect-[4/3] w-full cursor-ew-resize overflow-hidden rounded-lg border border-white/10"
+        className="before-after-slider relative aspect-[4/3] w-full cursor-ew-resize overflow-hidden rounded-xl border border-white/10"
       >
         <Image src={after} alt="Depois" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
         <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
           <Image src={before} alt="Antes" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
         </div>
-        <div className="absolute top-0 bottom-0 z-10 w-0.5 bg-gold" style={{ left: `${position}%` }}>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold bg-[#0C0A09]/80">
-            <svg className="h-5 w-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        {/* Divider line */}
+        <div
+          className="absolute top-0 bottom-0 z-10 w-0.5"
+          style={{ left: `${position}%`, background: "#E67E22" }}
+        >
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full border-2 bg-[#0C0A09]/85"
+            style={{ borderColor: "#E67E22" }}
+          >
+            <svg
+              className="h-5 w-5"
+              style={{ color: "#E67E22" }}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3" />
             </svg>
           </div>
         </div>
-        <span className="absolute top-3 left-3 z-10 bg-[#0C0A09]/70 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm rounded">
+        <span className="absolute top-3 left-3 z-10 rounded bg-[#0C0A09]/70 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm">
           ANTES
         </span>
-        <span className="absolute top-3 right-3 z-10 bg-gold/80 px-2 py-1 text-xs font-semibold text-[#0C0A09] backdrop-blur-sm rounded">
+        <span
+          className="absolute top-3 right-3 z-10 rounded px-2 py-1 text-xs font-semibold backdrop-blur-sm"
+          style={{ background: "rgba(230,126,34,0.85)", color: "#fff" }}
+        >
           DEPOIS
         </span>
       </div>
@@ -97,31 +114,27 @@ const PROJECTS = [
 
 export default function BeforeAfter() {
   return (
-    <SectionWrapper id="portfolio" className="section-glass py-14 sm:py-28">
+    <SectionWrapper id="portfolio" className="section-dark py-14 sm:py-28">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
-          <SectionHeader
-            eyebrow="Portfólio"
-            title="O Antes e o Depois"
-            subtitle="Arraste para ver a transformação. Resultados reais de projectos concluídos."
-          />
+        <SectionHeader
+          eyebrow="Portfólio"
+          title="O Antes e o Depois"
+          subtitle="Arraste para ver a transformação. Resultados reais de projectos concluídos."
+        />
 
-          <div className="mt-8 grid gap-5 sm:mt-16 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {PROJECTS.map((project) => (
-              <Slider key={project.label} {...project} />
-            ))}
-          </div>
+        <div className="mt-8 grid gap-5 sm:mt-16 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {PROJECTS.map((project) => (
+            <Slider key={project.label} {...project} />
+          ))}
+        </div>
 
-          {/* Portfolio page link */}
-          <div className="mt-8 text-center sm:mt-12">
-            <a
-              href="/portfolio"
-              className="btn-glass inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-semibold tracking-wide sm:gap-3 sm:px-8 sm:py-4 sm:text-sm"
-            >
-              Ver Portfólio Completo
-              <span>&rarr;</span>
-            </a>
-          </div>
+        <div className="mt-8 text-center sm:mt-12">
+          <a
+            href="#orcamento"
+            className="btn-glass inline-flex items-center gap-2 rounded-lg px-6 py-3 text-xs font-semibold tracking-wide sm:gap-3 sm:px-8 sm:py-4 sm:text-sm"
+          >
+            Quero um resultado assim <span>&rarr;</span>
+          </a>
         </div>
       </div>
     </SectionWrapper>

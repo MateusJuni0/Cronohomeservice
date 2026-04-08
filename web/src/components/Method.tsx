@@ -49,48 +49,88 @@ const STEPS = [
 
 export default function Method() {
   return (
-    <SectionWrapper id="metodo" className="section-glass py-14 sm:py-28">
+    <SectionWrapper id="metodo" className="section-warm py-14 sm:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
-          <SectionHeader
-            eyebrow="O Método"
-            title="Do contacto à entrega da chave"
-            subtitle="Sem surpresas, sem caos. 4 passos para a sua casa nova."
+        <SectionHeader
+          eyebrow="O Método"
+          title="Do contacto à entrega da chave"
+          subtitle="Sem surpresas, sem caos. 4 passos para a sua casa nova."
+          inverted
+        />
+
+        {/* Timeline vertical */}
+        <div className="relative mt-8 sm:mt-16">
+          {/* Connector line */}
+          <div
+            className="absolute left-[21px] top-10 bottom-10 w-[1px] sm:left-[27px] sm:top-12 sm:bottom-12"
+            style={{ background: "linear-gradient(to bottom, rgba(230,126,34,0.5), rgba(230,126,34,0.15), transparent)" }}
           />
 
-          {/* Timeline vertical */}
-          <div className="relative mt-8 sm:mt-16">
-            {/* Connector line */}
-            <div className="absolute left-[21px] top-10 bottom-10 w-[1px] bg-gradient-to-b from-gold/60 via-gold/20 to-transparent sm:left-[27px] sm:top-12 sm:bottom-12" />
-
-            {STEPS.map((step, i) => (
-              <div key={step.number} className={`relative flex gap-4 sm:gap-6 ${i < STEPS.length - 1 ? "mb-6 sm:mb-10" : ""}`}>
-                {/* Number box */}
-                <div className="z-10 flex h-11 w-11 flex-shrink-0 items-center justify-center border border-gold/30 bg-[rgba(255,255,255,0.08)] backdrop-blur-md rounded-lg sm:h-14 sm:w-14">
-                  <span className="font-serif text-base text-gold sm:text-lg">{step.number}</span>
-                </div>
-
-                {/* Content */}
-                <div className={`flex-1 pt-1 sm:pt-2 ${i < STEPS.length - 1 ? "border-b border-white/10 pb-5 sm:pb-8" : ""}`}>
-                  <div className="mb-1.5 flex items-center gap-2 sm:mb-2 sm:gap-3">
-                    <span className="text-gold [&>svg]:h-4 [&>svg]:w-4 sm:[&>svg]:h-5 sm:[&>svg]:w-5">{step.icon}</span>
-                    <h3 className="font-serif text-base sm:text-xl" style={{ color: "#FFFFFF" }}>{step.title}</h3>
-                  </div>
-                  <p className="text-xs leading-relaxed text-muted sm:text-sm">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="mt-8 text-center sm:mt-14">
-            <a
-              href="#orcamento"
-              className="btn-glass inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-medium sm:px-6 sm:py-3 sm:text-sm"
+          {STEPS.map((step, i) => (
+            <div
+              key={step.number}
+              className={`relative flex gap-4 sm:gap-6 ${i < STEPS.length - 1 ? "mb-6 sm:mb-10" : ""}`}
             >
-              Pronto para começar? <span>&rarr;</span> Pedir orçamento
-            </a>
-          </div>
+              {/* Number box */}
+              <div
+                className="z-10 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-white shadow-sm sm:h-14 sm:w-14"
+                style={{ border: "1px solid rgba(230,126,34,0.25)" }}
+              >
+                <span
+                  className="font-serif text-base sm:text-lg"
+                  style={{ color: "#E67E22" }}
+                >
+                  {step.number}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div
+                className={`flex-1 pt-1 sm:pt-2 ${
+                  i < STEPS.length - 1
+                    ? "border-b pb-5 sm:pb-8"
+                    : ""
+                }`}
+                style={{ borderColor: "rgba(26,19,10,0.08)" }}
+              >
+                <div className="mb-1.5 flex items-center gap-2 sm:mb-2 sm:gap-3">
+                  <span
+                    className="[&>svg]:h-4 [&>svg]:w-4 sm:[&>svg]:h-5 sm:[&>svg]:w-5"
+                    style={{ color: "#E67E22" }}
+                  >
+                    {step.icon}
+                  </span>
+                  <h3
+                    className="font-serif text-base sm:text-xl"
+                    style={{ color: "#1a130a" }}
+                  >
+                    {step.title}
+                  </h3>
+                </div>
+                <p
+                  className="text-xs leading-relaxed sm:text-sm"
+                  style={{ color: "rgba(26,19,10,0.60)" }}
+                >
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-8 text-center sm:mt-14">
+          <a
+            href="#orcamento"
+            className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-semibold transition-all hover:shadow-md sm:px-6 sm:py-3 sm:text-sm"
+            style={{
+              background: "#E67E22",
+              color: "#fff",
+              boxShadow: "0 4px 16px rgba(230,126,34,0.25)",
+            }}
+          >
+            Pronto para começar? <span>&rarr;</span> Pedir orçamento
+          </a>
         </div>
       </div>
     </SectionWrapper>

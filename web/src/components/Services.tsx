@@ -1,102 +1,113 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
 import SectionHeader from "./SectionHeader";
 
 const SERVICES = [
   {
-    number: "01",
     title: "Remodelação Geral",
-    description: "Transformação completa de espaços — do chão ao teto, chave na mão.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008V7.5Z" />
-      </svg>
-    ),
+    subtitle: "Chave na mão",
+    photo: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
   },
   {
-    number: "02",
-    title: "Instalações",
-    description: "Canalização, electricidade e gás — certificados e dentro da lei.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
-      </svg>
-    ),
-  },
-  {
-    number: "03",
     title: "Pintura e Acabamentos",
-    description: "Acabamento impecável com tintas premium e técnicas profissionais.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
-      </svg>
-    ),
+    subtitle: "Tintas premium",
+    photo: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80",
   },
   {
-    number: "04",
+    title: "Canalização",
+    subtitle: "Certificada",
+    photo: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80",
+  },
+  {
+    title: "Electricidade",
+    subtitle: "Normas vigentes",
+    photo: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80",
+  },
+  {
+    title: "Pavimentos",
+    subtitle: "Cerâmica e vinílico",
+    photo: "https://images.unsplash.com/photo-1558618047-3c7b36c3e6c6?w=600&q=80",
+  },
+  {
+    title: "Cozinhas",
+    subtitle: "Projecto a projecto",
+    photo: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80",
+  },
+  {
+    title: "Casas de Banho",
+    subtitle: "Design moderno",
+    photo: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80",
+  },
+  {
     title: "Decoração de Interiores",
-    description: "Design de interiores personalizado que reflecte o seu estilo de vida.",
-    icon: (
-      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
-      </svg>
-    ),
+    subtitle: "Personalizado",
+    photo: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80",
   },
 ];
 
 export default function Services() {
   return (
-    <SectionWrapper id="servicos" className="section-glass py-14 sm:py-28">
+    <SectionWrapper id="servicos" className="section-light py-16 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel rounded-2xl p-5 sm:p-8 md:p-12">
-          <SectionHeader
-            eyebrow="Nossos Serviços"
-            title="Soluções completas para a sua casa"
-            subtitle="Do projecto à entrega — cada detalhe importa."
-          />
+        <SectionHeader
+          eyebrow="Nossos Serviços"
+          title="Soluções completas para a sua casa"
+          subtitle="Do projecto à entrega — cada detalhe importa."
+          inverted
+        />
 
-          <div className="mt-8 grid grid-cols-1 gap-3 sm:mt-16 sm:gap-4 md:grid-cols-2">
-            {SERVICES.map((service) => (
-              <motion.div
-                key={service.title}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="glass-card group relative cursor-default overflow-hidden rounded-xl p-5 sm:p-8"
-              >
-                {/* Watermark number */}
-                <span className="pointer-events-none absolute right-4 top-3 select-none font-serif text-[56px] leading-none text-gold/[0.06] sm:right-6 sm:top-4 sm:text-[96px]">
-                  {service.number}
-                </span>
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-4 md:grid-cols-4">
+          {SERVICES.map((service, i) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              whileHover={{ y: -4 }}
+              className="group relative aspect-[3/4] cursor-default overflow-hidden rounded-xl shadow-md"
+            >
+              <Image
+                src={service.photo}
+                alt={service.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 640px) 50vw, 25vw"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
-                <div className="relative">
-                  {/* Icon container */}
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center border border-gold/30 text-gold transition-all duration-300 group-hover:border-gold group-hover:bg-gold/10 rounded-lg sm:mb-6 sm:h-14 sm:w-14 [&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6">
-                    {service.icon}
-                  </div>
+              {/* Text */}
+              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                <h3 className="text-sm font-semibold leading-tight text-white sm:text-base">
+                  {service.title}
+                </h3>
+                <span
+                  className="mt-1.5 block h-0.5 w-6 transition-all duration-300 group-hover:w-10"
+                  style={{ background: "#E67E22" }}
+                />
+                <p className="mt-1 text-[10px] sm:text-xs" style={{ color: "rgba(255,255,255,0.65)" }}>
+                  {service.subtitle}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-                  {/* Title */}
-                  <h3 className="mb-2 font-serif text-lg sm:mb-3 sm:text-2xl" style={{ color: "#FFFFFF" }}>{service.title}</h3>
-
-                  {/* Gold line */}
-                  <span className="mb-3 block h-[1px] w-8 bg-gold sm:mb-4 sm:w-10" />
-
-                  {/* Description */}
-                  <p className="mb-4 text-xs leading-relaxed text-muted sm:mb-6 sm:text-sm">
-                    {service.description}
-                  </p>
-
-                  {/* CTA */}
-                  <div className="flex items-center gap-2 text-xs font-medium text-gold/70 transition-all duration-300 group-hover:gap-3 group-hover:text-gold sm:text-sm">
-                    <span>Saber mais</span>
-                    <span className="inline-block">&rarr;</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="mt-8 text-center sm:mt-12">
+          <a
+            href="#orcamento"
+            className="inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-xs font-semibold tracking-wide transition-all hover:shadow-md sm:px-8 sm:py-4 sm:text-sm"
+            style={{
+              borderColor: "rgba(230,126,34,0.4)",
+              color: "#E67E22",
+            }}
+          >
+            Pedir orçamento para o seu projecto <span>&rarr;</span>
+          </a>
         </div>
       </div>
     </SectionWrapper>

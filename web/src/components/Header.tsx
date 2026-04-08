@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_ITEMS = [
   { label: "Serviços", href: "#servicos" },
-  { label: "Portfólio", href: "/portfolio" },
+  { label: "Portfólio", href: "#portfolio" },
   { label: "O Método", href: "#metodo" },
   { label: "Orçamento", href: "#orcamento" },
 ];
@@ -25,9 +25,10 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#0C0A09]/95 backdrop-blur-xl border-b border-gold/10 shadow-lg shadow-black/30"
-          : "bg-[#0C0A09]/60 backdrop-blur-md border-b border-white/5"
+          ? "bg-[#0C0A09]/95 backdrop-blur-xl shadow-lg shadow-black/30"
+          : "bg-[#0C0A09]/60 backdrop-blur-md"
       }`}
+      style={{ borderBottom: scrolled ? "1px solid rgba(230,126,34,0.12)" : "1px solid rgba(255,255,255,0.05)" }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
@@ -44,7 +45,7 @@ export default function Header() {
               <span className="text-sm font-bold tracking-wide sm:text-base" style={{ color: "#FFFFFF" }}>
                 CRONOGRAMA
               </span>
-              <span className="text-[9px] font-light tracking-[0.2em] sm:text-[10px]" style={{ color: "#C9A84C" }}>
+              <span className="text-[9px] font-light tracking-[0.2em] sm:text-[10px]" style={{ color: "#E67E22" }}>
                 Home Service
               </span>
             </div>
@@ -65,7 +66,8 @@ export default function Header() {
               href="#orcamento"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="gold-glow bg-gold px-6 py-2.5 text-sm font-semibold text-[#0C0A09]"
+              className="gold-glow rounded-lg px-6 py-2.5 text-sm font-semibold text-white"
+              style={{ background: "#E67E22" }}
             >
               Pedir Orçamento
             </motion.a>
@@ -93,7 +95,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu — fullscreen overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
@@ -103,12 +105,12 @@ export default function Header() {
             transition={{ duration: 0.35 }}
             className="fixed inset-0 top-16 z-40 flex flex-col items-center justify-center gap-2 bg-[#0C0A09]/98 backdrop-blur-2xl md:hidden"
           >
-            {/* Gold accent line */}
             <motion.span
               initial={{ width: 0 }}
               animate={{ width: 48 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 block h-[2px] bg-gold"
+              className="mb-4 block h-[2px]"
+              style={{ background: "#E67E22" }}
             />
 
             {NAV_ITEMS.map((item, i) => (
@@ -120,18 +122,21 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3, delay: 0.08 * i }}
-                className="py-3 text-center font-serif text-2xl font-light tracking-wide text-white/80 transition-colors hover:text-gold"
+                className="py-3 text-center font-serif text-2xl font-light tracking-wide text-white/80 transition-colors"
+                style={{ ["--tw-text-opacity" as string]: "1" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#E67E22"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.8)"; }}
               >
                 {item.label}
               </motion.a>
             ))}
 
-            {/* Gold accent line */}
             <motion.span
               initial={{ width: 0 }}
               animate={{ width: 48 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-4 mb-6 block h-[2px] bg-gold"
+              className="mt-4 mb-6 block h-[2px]"
+              style={{ background: "#E67E22" }}
             />
 
             <motion.a
@@ -140,22 +145,22 @@ export default function Header() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.45 }}
-              className="btn-gold-glass rounded-lg px-10 py-4 text-base font-semibold tracking-wide"
+              className="rounded-lg px-10 py-4 text-base font-semibold tracking-wide text-white"
+              style={{ background: "#E67E22", boxShadow: "0 4px 20px rgba(230,126,34,0.35)" }}
             >
               Pedir Orçamento
             </motion.a>
 
-            {/* Contact info */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.6 }}
               className="mt-8 flex flex-col items-center gap-1.5"
             >
-              <a href="tel:+351931428476" className="text-sm text-white/40 transition-colors hover:text-gold">
+              <a href="tel:+351931428476" className="text-sm text-white/40 transition-colors hover:text-white/80">
                 +351 931 428 476
               </a>
-              <a href="mailto:grupocronograma@hotmail.com" className="text-xs text-white/30 transition-colors hover:text-gold">
+              <a href="mailto:grupocronograma@hotmail.com" className="text-xs text-white/30 transition-colors hover:text-white/60">
                 grupocronograma@hotmail.com
               </a>
             </motion.div>

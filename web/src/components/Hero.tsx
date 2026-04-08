@@ -1,9 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-
-const LightRays = dynamic(() => import("./LightRays"), { ssr: false });
 
 const TRUST_ITEMS = [
   {
@@ -38,7 +35,7 @@ const TRUST_ITEMS = [
     subtitle: "Limpeza final incluída",
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" />
       </svg>
     ),
   },
@@ -47,25 +44,8 @@ const TRUST_ITEMS = [
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* LightRays Background */}
-      <div className="absolute inset-0 z-0">
-        <LightRays
-          raysColor="#C9A84C"
-          raysOrigin="top-center"
-          raysSpeed={0.6}
-          lightSpread={1.5}
-          rayLength={2.5}
-          pulsating={true}
-          fadeDistance={0.8}
-          saturation={0.6}
-          followMouse={true}
-          mouseInfluence={0.08}
-          noiseAmount={0.15}
-          distortion={0.1}
-        />
-      </div>
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#0C0A09]/60 via-[#0C0A09]/40 to-[#0C0A09]/80" />
+      {/* Dark overlay over the fixed blueprint background */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#0C0A09]/75 via-[#0C0A09]/60 to-[#0C0A09]/85" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-20 text-center sm:py-32 sm:px-6 lg:px-8">
@@ -73,7 +53,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mb-4 text-[10px] font-medium tracking-[0.3em] text-gold/80 uppercase sm:mb-6 sm:text-xs"
+          className="mb-4 text-[10px] font-medium tracking-[0.3em] uppercase sm:mb-6 sm:text-xs"
+          style={{ color: "rgba(230, 126, 34, 0.85)" }}
         >
           Remodelações Premium em Lisboa
         </motion.p>
@@ -90,7 +71,8 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-1 inline-block text-gold sm:mt-2"
+            className="mt-1 inline-block sm:mt-2"
+            style={{ color: "#E67E22" }}
           >
             No prazo. No orçamento.
           </motion.span>
@@ -100,7 +82,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="mx-auto mt-5 max-w-2xl text-base font-light sm:mt-8 sm:text-xl" style={{ color: "rgba(250,250,249,0.80)" }}
+          className="mx-auto mt-5 max-w-2xl text-base font-light sm:mt-8 sm:text-xl"
+          style={{ color: "rgba(250,250,249,0.80)" }}
         >
           20 anos de experiência em remodelações em Lisboa e arredores.
           Orçamento gratuito em 24h.
@@ -116,12 +99,12 @@ export default function Hero() {
             href="#orcamento"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="btn-gold-glass w-full rounded-lg px-8 py-3.5 text-base font-semibold sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
+            className="btn-orange w-full rounded-lg px-8 py-3.5 text-base font-semibold sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
           >
             Pedir Orçamento Grátis
           </motion.a>
           <motion.a
-            href="/portfolio"
+            href="#portfolio"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             className="btn-glass w-full rounded-lg px-8 py-3.5 text-base font-medium sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
@@ -140,7 +123,12 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
               className="glass-card group flex flex-col items-center gap-1.5 rounded-xl px-3 py-3.5 sm:gap-2 sm:px-4 sm:py-5"
             >
-              <span className="text-gold [&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6">{item.icon}</span>
+              <span
+                className="[&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6"
+                style={{ color: "#E67E22" }}
+              >
+                {item.icon}
+              </span>
               <span className="text-xs font-semibold text-[rgba(250,250,249,0.9)] sm:text-sm">{item.title}</span>
               <span className="text-[10px] sm:text-[11px]" style={{ color: "rgba(250,250,249,0.65)" }}>{item.subtitle}</span>
             </motion.div>
@@ -161,7 +149,14 @@ export default function Hero() {
           className="flex flex-col items-center gap-2"
         >
           <span className="text-[10px] font-medium tracking-[0.2em] text-[rgba(250,250,249,0.3)] uppercase">Scroll</span>
-          <svg className="h-5 w-5 text-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <svg
+            className="h-5 w-5"
+            style={{ color: "rgba(230,126,34,0.5)" }}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={1.5}
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
         </motion.div>

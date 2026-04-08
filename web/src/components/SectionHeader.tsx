@@ -3,22 +3,38 @@ interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   centered?: boolean;
+  inverted?: boolean;
 }
 
-export default function SectionHeader({ eyebrow, title, subtitle, centered = true }: SectionHeaderProps) {
+export default function SectionHeader({
+  eyebrow,
+  title,
+  subtitle,
+  centered = true,
+  inverted = false,
+}: SectionHeaderProps) {
   return (
     <div className={centered ? "text-center" : ""}>
-      <p className="mb-3 text-xs font-medium tracking-[0.25em] text-gold uppercase">
+      <p
+        className="mb-3 text-xs font-medium tracking-[0.25em] uppercase"
+        style={{ color: "#E67E22" }}
+      >
         {eyebrow}
       </p>
-      <h2 className="font-serif text-2xl font-light leading-tight sm:text-3xl md:text-4xl lg:text-5xl" style={{ color: "#FFFFFF" }}>
+      <h2
+        className="font-serif text-2xl font-light leading-tight sm:text-3xl md:text-4xl lg:text-5xl"
+        style={{ color: inverted ? "#1a130a" : "#FFFFFF" }}
+      >
         {title}
       </h2>
-      <span className={`mt-3 mb-3 block h-[2px] w-10 bg-gold sm:mt-5 sm:mb-4 sm:w-12 ${centered ? "mx-auto" : ""}`} />
+      <span
+        className={`mt-3 mb-3 block h-[2px] w-10 sm:mt-5 sm:mb-4 sm:w-12 ${centered ? "mx-auto" : ""}`}
+        style={{ background: "#E67E22" }}
+      />
       {subtitle && (
         <p
           className={`text-sm sm:text-base ${centered ? "mx-auto max-w-xl" : "max-w-xl"}`}
-          style={{ color: "#D6D3D1" }}
+          style={{ color: inverted ? "rgba(26, 19, 10, 0.60)" : "#D6D3D1" }}
         >
           {subtitle}
         </p>
