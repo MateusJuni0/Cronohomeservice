@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     question: "Quanto tempo demora uma remodelação de casa de banho?",
-    answer: "Uma remodelação completa de casa de banho demora entre 2 a 4 semanas, dependendo da complexidade. Damos-lhe o prazo exacto no orçamento e cumprimos rigorosamente.",
+    answer: "Uma remodelação completa de casa de banho demora entre 2 a 4 semanas, dependendo da complexidade. Damos-lhe o prazo exato no orçamento e cumprimos rigorosamente.",
   },
   {
     question: "Trabalham com materiais dos clientes?",
@@ -24,7 +24,7 @@ const FAQS = [
   },
   {
     question: "O que acontece se aparecerem problemas ocultos na obra?",
-    answer: "Antes de iniciar, fazemos uma inspecção técnica completa. Se surgir algo inesperado durante a obra, contactamos imediatamente, explicamos a situação e apresentamos opções com custos antes de avançar. Sem surpresas.",
+    answer: "Antes de iniciar, fazemos uma inspeção técnica completa. Se surgir algo inesperado durante a obra, contactamos imediatamente, explicamos a situação e apresentamos opções com custos antes de avançar. Sem surpresas.",
   },
 ];
 

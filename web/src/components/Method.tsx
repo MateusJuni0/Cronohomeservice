@@ -7,17 +7,17 @@ const STEPS = [
   {
     number: "01",
     title: "Visita e Diagnóstico",
-    description: "Avaliámos o espaço gratuitamente e ouvimos as suas necessidades.",
+    description: "Avaliamos o espaço gratuitamente e ouvimos as suas necessidades.",
   },
   {
     number: "02",
     title: "Orçamento Fixo",
-    description: "Preço fechado, sem surpresas. Sabe exactamente quanto vai investir.",
+    description: "Preço fechado, sem surpresas. Sabe exatamente quanto vai investir.",
   },
   {
     number: "03",
     title: "Obra com Gestão Dedicada",
-    description: "Um gestor único, actualizações diárias por WhatsApp. Zero stress.",
+    description: "Um gestor dedicado, atualizações diárias por WhatsApp. Zero stress.",
   },
   {
     number: "04",

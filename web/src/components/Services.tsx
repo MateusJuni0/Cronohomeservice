@@ -57,9 +57,9 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    name: "Electricidade e Canalização",
+    name: "Eletricidade e Canalização",
     items: [
-      { title: "Quadro eléctrico", photo: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80" },
+      { title: "Quadro elétrico", photo: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&q=80" },
       { title: "Instalação de tomadas", photo: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" },
       { title: "Reparação de tubagens", photo: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" },
       { title: "Aquecimento central", photo: "https://images.unsplash.com/photo-1558618047-3c7b36c3e6c6?w=400&q=80" },
