@@ -30,30 +30,9 @@ html {
 }
 
 body {
-  background: var(--color-base);
-  color: #FFFFFF;
+  background: #ffffff;
+  color: #1A2238;
   font-family: var(--font-sans), system-ui, sans-serif;
-}
-
-/* ── FIXED FULL-PAGE BACKGROUND ── */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=85&auto=format&fit=crop');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  /* No background-attachment:fixed — position:fixed handles it */
-}
-
-/* Mobile: prevent zoom by using width-based sizing instead of cover */
-@media (max-width: 768px) {
-  body::before {
-    background-size: auto 100%;
-    background-position: 40% center;
-  }
 }
 
 /* ── SECTION VARIANTS — dark overlays so blueprint always shows through ── */
