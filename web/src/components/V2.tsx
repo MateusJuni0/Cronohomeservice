@@ -364,9 +364,9 @@ function HowItWorks() {
   ];
 
   const cards = [
-    { title: "Remodelação WC", from: "€1.890", img: "from-[#1E4FBF] to-[#173FA3]" },
-    { title: "Pintura Interior", from: "€6/m²", img: "from-[#FF7A1A] to-[#E56A0E]" },
-    { title: "Instalação Eléctrica", from: "€95", img: "from-[#0B1E3A] to-[#1A2238]" },
+    { title: "Remodelação WC", from: "€1.890", img: "/services/casas-de-banho.jpg" },
+    { title: "Pintura Interior", from: "€6/m²", img: "/services/pinturas.jpg" },
+    { title: "Instalação Eléctrica", from: "€95", img: "/services/eletricidade.jpg" },
   ];
 
   return (
@@ -403,17 +403,28 @@ function HowItWorks() {
               key={c.title}
               className="group relative flex flex-col overflow-hidden rounded-3xl border border-[#E6EAF0] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className={`relative aspect-[4/5] bg-gradient-to-br ${c.img}`}>
-                <div className="absolute left-4 top-4 rounded-full bg-[#0B1E3A] px-3 py-1.5 text-xs font-bold text-white">
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#0B1E3A]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={c.img}
+                  alt={c.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/25"
+                />
+                <div className="absolute left-4 top-4 rounded-full bg-[#0B1E3A]/90 px-3 py-1.5 text-xs font-bold text-white shadow-md backdrop-blur-sm">
                   Desde {c.from}
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center text-white/80">
-                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 3v18" /></svg>
-                </div>
+                <h3 className="absolute bottom-4 left-4 right-4 text-base font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-lg">
+                  {c.title}
+                </h3>
               </div>
-              <div className="flex flex-1 flex-col justify-between p-5">
-                <h3 className="text-base font-bold text-[#0B1E3A]">{c.title}</h3>
-                <a href="#orcamento" className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#1E4FBF]">
+              <div className="flex flex-1 items-center justify-between gap-3 p-5">
+                <span className="text-sm text-[#4A5568]">Preço fechado, com IVA</span>
+                <a href="#orcamento" className="inline-flex items-center gap-1 text-sm font-bold text-[#1E4FBF] hover:underline">
                   Pedir preço <span aria-hidden>→</span>
                 </a>
               </div>
