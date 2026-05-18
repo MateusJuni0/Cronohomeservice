@@ -29,53 +29,58 @@ const PHONES = {
 };
 
 /* -------------------------------------------------------------------------
-   Header
+   Header — logo centrado (padrão OSCAR), nav split 3+2, CTA à direita
    ------------------------------------------------------------------------- */
 function Header() {
   const [open, setOpen] = useState(false);
 
+  const linkClass =
+    "text-[14px] font-semibold tracking-wide text-[#1A2238] transition hover:text-[#1E4FBF]";
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#E6EAF0] bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href="#top" className="flex items-center gap-3">
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-4 lg:px-8">
+        {/* LEFT — desktop nav (3 links) / mobile spacer */}
+        <nav className="hidden items-center gap-7 justify-self-start lg:flex">
+          <a href="#servicos" className={linkClass}>Serviços</a>
+          <a href="#metodo" className={linkClass}>Método</a>
+          <a href="#portfolio" className={linkClass}>Antes &amp; Depois</a>
+        </nav>
+        <span className="block lg:hidden" aria-hidden="true" />
+
+        {/* CENTER — logo (always centered) */}
+        <a
+          href="#top"
+          className="flex items-center gap-2.5 justify-self-center"
+          aria-label="Crono Home Service — início"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo-crono.jpeg"
             alt="Crono Home Service"
-            className="h-11 w-11 rounded-lg object-cover ring-1 ring-[#E6EAF0]"
+            className="h-10 w-10 rounded-lg object-cover ring-1 ring-[#E6EAF0] sm:h-11 sm:w-11"
           />
-          <span className="text-xl font-black tracking-tight text-[#0B1E3A]">
+          <span className="text-lg font-black tracking-tight text-[#0B1E3A] sm:text-xl">
             CRONO<span className="text-[#FF7A1A]">.</span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex">
-          <a href="#servicos" className="text-[15px] font-semibold text-[#1A2238] hover:text-[#1E4FBF]">Serviços</a>
-          <a href="#metodo" className="text-[15px] font-semibold text-[#1A2238] hover:text-[#1E4FBF]">Método</a>
-          <a href="#portfolio" className="text-[15px] font-semibold text-[#1A2238] hover:text-[#1E4FBF]">Antes &amp; Depois</a>
-          <a href="#avaliacoes" className="text-[15px] font-semibold text-[#1A2238] hover:text-[#1E4FBF]">Avaliações</a>
-          <a href="#faq" className="text-[15px] font-semibold text-[#1A2238] hover:text-[#1E4FBF]">FAQ</a>
-        </nav>
-
-        <div className="hidden lg:flex lg:items-center lg:gap-3">
-          <a
-            href={`tel:${PHONES.primary.replace(/\s/g, "")}`}
-            className="text-sm font-bold text-[#0B1E3A]"
-          >
-            {PHONES.primary}
-          </a>
+        {/* RIGHT — desktop nav (2 links) + CTA / mobile hamburger */}
+        <div className="hidden items-center gap-6 justify-self-end lg:flex">
+          <a href="#avaliacoes" className={linkClass}>Avaliações</a>
+          <a href="#faq" className={linkClass}>FAQ</a>
           <a
             href="#orcamento"
-            className="rounded-full bg-[#FF7A1A] px-6 py-3 text-sm font-bold text-white shadow-[0_6px_20px_rgba(255,122,26,0.35)] transition hover:bg-[#E56A0E]"
+            className="rounded-full bg-[#FF7A1A] px-5 py-2.5 text-sm font-bold text-white shadow-[0_6px_20px_rgba(255,122,26,0.35)] transition hover:-translate-y-0.5 hover:bg-[#E56A0E]"
           >
             Pedir Orçamento
           </a>
         </div>
-
         <button
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden"
+          className="justify-self-end lg:hidden"
           aria-label="Menu"
+          aria-expanded={open}
           type="button"
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0B1E3A" strokeWidth="2.2" strokeLinecap="round">
