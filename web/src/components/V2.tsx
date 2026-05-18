@@ -263,6 +263,74 @@ function Hero() {
 }
 
 /* -------------------------------------------------------------------------
+   Services Category Grid — 13 categorias com fotos circulares (estilo OSCAR)
+   ------------------------------------------------------------------------- */
+const SERVICE_CATEGORIES: Array<{ slug: string; label: string }> = [
+  { slug: "remodelacoes-gerais", label: "Remodelações" },
+  { slug: "pichelaria", label: "Pichelaria" },
+  { slug: "eletricidade", label: "Eletricidade" },
+  { slug: "pinturas", label: "Pinturas" },
+  { slug: "decoracao", label: "Decoração" },
+  { slug: "pladur", label: "Pladur" },
+  { slug: "cozinhas", label: "Cozinhas" },
+  { slug: "casas-de-banho", label: "Casas de Banho" },
+  { slug: "limpeza-pos-obra", label: "Limpeza Pós-Obra" },
+  { slug: "jardinagem", label: "Jardinagem" },
+  { slug: "mudancas", label: "Mudanças" },
+  { slug: "manutencao", label: "Manutenção" },
+  { slug: "impermeabilizacao", label: "Impermeabilização" },
+];
+
+function ServicesCategoryGrid() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">
+            13 áreas, 1 equipa
+          </p>
+          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+            O que precisares, nós resolvemos.
+          </h2>
+          <p className="mt-5 text-base text-[#4A5568] sm:text-lg">
+            Da casa de banho à fachada, da canalização ao jardim. Uma só
+            empresa para tudo o que a tua casa precisa.
+          </p>
+        </div>
+
+        <ul className="mx-auto mt-12 grid max-w-5xl grid-cols-3 gap-x-3 gap-y-8 sm:grid-cols-4 md:grid-cols-5 lg:mt-16 lg:grid-cols-7 lg:gap-x-4 lg:gap-y-10">
+          {SERVICE_CATEGORIES.map((cat) => (
+            <li key={cat.slug} className="flex">
+              <a
+                href="#servicos"
+                className="group mx-auto flex flex-col items-center gap-3 text-center"
+              >
+                <div className="relative aspect-square w-[88px] overflow-hidden rounded-full bg-[#F5F7FA] ring-2 ring-[#E6EAF0] transition duration-300 group-hover:-translate-y-1 group-hover:ring-[#1E4FBF] group-hover:shadow-[0_12px_32px_rgba(30,79,191,0.25)] sm:w-[96px] lg:w-[112px]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/services/${cat.slug}.jpg`}
+                    alt={cat.label}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/40"
+                  />
+                </div>
+                <span className="max-w-[110px] text-[12px] font-semibold leading-tight text-[#0B1E3A] sm:text-[13px] lg:text-sm">
+                  {cat.label}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------
    Press / Trust band
    ------------------------------------------------------------------------- */
 function PressBand() {
@@ -381,33 +449,33 @@ const CATEGORIES: ServiceCategory[] = [
     items: [
       {
         title: "Remodelação de casa de banho",
-        img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80",
+        img: "/services/casas-de-banho.jpg",
         from: "€1.890",
         was: "€2.400",
         off: "-20%",
       },
       {
         title: "Remodelação de cozinha",
-        img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80",
+        img: "/services/cozinhas.jpg",
         from: "€3.450",
         was: "€4.200",
         off: "-18%",
       },
       {
         title: "Remodelação integral",
-        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
+        img: "/gallery/obra-sala-oeiras.jpg",
         from: "€450/m²",
       },
       {
         title: "Substituição de pavimento",
-        img: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600&q=80",
+        img: "/gallery/obra-quarto-sintra.jpg",
         from: "€28/m²",
         was: "€35/m²",
         off: "-20%",
       },
       {
         title: "Tectos falsos em pladur",
-        img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80",
+        img: "/services/pladur.jpg",
         from: "€22/m²",
       },
     ],
@@ -418,31 +486,31 @@ const CATEGORIES: ServiceCategory[] = [
     items: [
       {
         title: "Pintura interior — sala",
-        img: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80",
+        img: "/services/pinturas.jpg",
         from: "€6/m²",
         was: "€9/m²",
         off: "-33%",
       },
       {
         title: "Pintura de quarto",
-        img: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&q=80",
+        img: "/services/decoracao.jpg",
         from: "€180",
       },
       {
         title: "Pintura de fachada",
-        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80",
+        img: "/gallery/obra-fachada-amadora.jpg",
         from: "€12/m²",
       },
       {
         title: "Pintura de portas",
-        img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+        img: "/services/manutencao.jpg",
         from: "€45",
         was: "€65",
         off: "-30%",
       },
       {
         title: "Preparação + pintura",
-        img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&q=80",
+        img: "/gallery/obra-pladur-almada.jpg",
         from: "€9/m²",
       },
     ],
@@ -453,29 +521,29 @@ const CATEGORIES: ServiceCategory[] = [
     items: [
       {
         title: "Instalação eléctrica — ponto",
-        img: "https://images.unsplash.com/photo-1558002038-1055907df827?w=600&q=80",
+        img: "/services/eletricidade.jpg",
         from: "€95",
       },
       {
         title: "Quadro eléctrico novo",
-        img: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80",
+        img: "/services/eletricidade.jpg",
         from: "€420",
         was: "€540",
         off: "-22%",
       },
       {
         title: "Desentupimentos urgente",
-        img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80",
+        img: "/services/pichelaria.jpg",
         from: "€65",
       },
       {
         title: "Substituição de canalização",
-        img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80",
+        img: "/services/pichelaria.jpg",
         from: "€150",
       },
       {
         title: "Instalação de esquentador",
-        img: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=600&q=80",
+        img: "/services/manutencao.jpg",
         from: "€120",
         was: "€160",
         off: "-25%",
@@ -613,6 +681,79 @@ function BeforeAfterLight() {
               <BeforeAfterSlider {...p} />
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------
+   Services Gallery — carousel mobile / grid desktop com trabalhos entregues
+   ------------------------------------------------------------------------- */
+const GALLERY_WORKS: Array<{ slug: string; cat: string; title: string }> = [
+  { slug: "obra-cozinha-lisboa", cat: "Cozinha", title: "Remodelação completa — Lisboa" },
+  { slug: "obra-casa-banho-cascais", cat: "Casa de Banho", title: "WC de luxo — Cascais" },
+  { slug: "obra-sala-oeiras", cat: "Sala", title: "Renovação total — Oeiras" },
+  { slug: "obra-quarto-sintra", cat: "Quarto", title: "Suite principal — Sintra" },
+  { slug: "obra-fachada-amadora", cat: "Fachada", title: "Pintura exterior — Amadora" },
+  { slug: "obra-pladur-almada", cat: "Pladur", title: "Tectos falsos — Almada" },
+];
+
+function ServicesGallery() {
+  return (
+    <section className="bg-[#F5F7FA] py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">
+            Galeria
+          </p>
+          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+            Trabalhos entregues nos últimos meses.
+          </h2>
+          <p className="mt-5 text-base text-[#4A5568] sm:text-lg">
+            Cada obra é entregue com chave-na-mão, limpeza profunda e
+            garantia de 5 anos sobre intervenções estruturais.
+          </p>
+        </div>
+
+        <div className="mt-12 -mx-5 overflow-x-auto px-5 pb-4 lg:mx-0 lg:overflow-visible lg:px-0">
+          <div className="flex w-max gap-5 lg:grid lg:w-auto lg:grid-cols-3 lg:gap-6">
+            {GALLERY_WORKS.map((w) => (
+              <a
+                key={w.slug}
+                href="#orcamento"
+                className="group block w-[280px] flex-none sm:w-[320px] lg:w-auto"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white ring-1 ring-[#E6EAF0] transition group-hover:ring-[#1E4FBF] group-hover:shadow-xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/gallery/${w.slug}.jpg`}
+                    alt={`${w.cat} — ${w.title}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#1E4FBF] shadow-sm">
+                    {w.cat}
+                  </span>
+                </div>
+                <h3 className="mt-3 text-base font-bold text-[#0B1E3A] transition group-hover:text-[#1E4FBF]">
+                  {w.title}
+                </h3>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 text-center">
+          <a
+            href="#orcamento"
+            className="inline-flex items-center gap-2 rounded-full bg-[#FF7A1A] px-7 py-3.5 text-sm font-bold text-white shadow-[0_6px_20px_rgba(255,122,26,0.35)] transition hover:-translate-y-0.5 hover:bg-[#E56A0E]"
+          >
+            Quero uma obra como esta
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -937,10 +1078,12 @@ export default function V2Home() {
       <Header />
       <main>
         <Hero />
+        <ServicesCategoryGrid />
         <PressBand />
         <HowItWorks />
         <ServicesGrid />
         <BeforeAfterLight />
+        <ServicesGallery />
         <Method />
         <Reviews />
         <FAQSection />
