@@ -29,6 +29,30 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Environment variables
+
+Create `web/.env.local` (gitignored) with the following keys.
+Only `FAL_API_KEY` is needed to run the image generation scripts;
+the others enable the production lead pipeline.
+
+```env
+# Image generation (scripts/gen-images-fal.mjs, gen-images-round2.mjs)
+FAL_API_KEY=...
+FAL_KEY=...   # alias accepted by the script
+
+# Lead pipeline (web/src/app/api/leads/route.ts) — optional but recommended
+# When missing, lead is logged + saved to /tmp/leads.jsonl and the side-effect
+# is skipped without erroring.
+TELEGRAM_BOT_TOKEN=...   # Hermes bot reused
+TELEGRAM_CHAT_ID=...     # Mateus chat_id
+NEXT_PUBLIC_SUPABASE_URL=...
+SUPABASE_SERVICE_ROLE_KEY=...
+```
+
+**TODO Mateus:** add the four lead-pipeline vars to the Vercel project before
+publishing the site to the client. Until then, leads land only in Vercel logs
++ /tmp (which Vercel rotates).
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

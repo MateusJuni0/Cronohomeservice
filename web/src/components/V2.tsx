@@ -899,9 +899,68 @@ function FAQSection() {
 }
 
 /* -------------------------------------------------------------------------
-   Lead CTA
+   Lead CTA — formulário ligado a /api/leads com loading/success/error states
    ------------------------------------------------------------------------- */
+type LeadStatus = "idle" | "loading" | "success" | "error";
+
+function getLeadSource(): string {
+  if (typeof window === "undefined") return "website-v2";
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = params.get("utm_source");
+  const utmMedium = params.get("utm_medium");
+  const utmCampaign = params.get("utm_campaign");
+  if (utmSource) {
+    return [utmSource, utmMedium, utmCampaign].filter(Boolean).join(" / ");
+  }
+  const ref = typeof document !== "undefined" ? document.referrer : "";
+  if (ref) {
+    try { return `referrer: ${new URL(ref).hostname}`; } catch { /* noop */ }
+  }
+  return "website-v2";
+}
+
 function LeadCTA() {
+  const [status, setStatus] = useState<LeadStatus>("idle");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    setStatus("loading");
+    setErrors({});
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          phone: data.get("phone"),
+          message: data.get("message"),
+          source: getLeadSource(),
+        }),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        errors?: Record<string, string>;
+      };
+
+      if (!res.ok || !json.ok) {
+        setErrors(json.errors ?? { _: "Não foi possível enviar. Tente outra vez." });
+        setStatus("error");
+        return;
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch {
+      setErrors({ _: "Erro de ligação. Tente outra vez ou contacte-nos pelo WhatsApp." });
+      setStatus("error");
+    }
+  }
+
   return (
     <section id="orcamento" className="relative overflow-hidden bg-[#1E4FBF] py-20 text-white lg:py-28">
       <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#FF7A1A]/30 blur-3xl" />
@@ -917,35 +976,111 @@ function LeadCTA() {
           Envie-nos uma mensagem com o que precisa. Recebe o preço fechado no WhatsApp.
         </p>
 
-        <form
-          className="mx-auto mt-10 flex max-w-2xl flex-col gap-3 rounded-3xl bg-white p-4 shadow-2xl sm:flex-row sm:p-2"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            type="text"
-            placeholder="O seu nome"
-            className="flex-1 rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] sm:rounded-full"
-          />
-          <input
-            type="tel"
-            placeholder="WhatsApp / Telemóvel"
-            className="flex-1 rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] sm:rounded-full"
-          />
-          <button
-            type="submit"
-            className="rounded-2xl bg-[#FF7A1A] px-8 py-4 text-base font-bold text-white transition hover:bg-[#E56A0E] sm:rounded-full"
+        {status === "success" ? (
+          <div className="mx-auto mt-10 max-w-2xl rounded-3xl bg-white p-8 text-left shadow-2xl">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[#0FA968]/15">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0FA968" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12l5 5L20 7" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-black text-[#0B1E3A]">Obrigado, recebemos o seu pedido.</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-[#4A5568]">
+                  Em 24 horas enviamos resposta directa pelo seu WhatsApp.
+                  Para uma conversa imediata, ligue-nos ou escreva-nos abaixo.
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <form
+            className="mx-auto mt-10 flex max-w-2xl flex-col gap-3 rounded-3xl bg-white p-4 text-left shadow-2xl"
+            onSubmit={handleSubmit}
+            noValidate
           >
-            Pedir Orçamento
-          </button>
-        </form>
+            <label className="sr-only" htmlFor="lead-name">Nome</label>
+            <input
+              id="lead-name"
+              name="name"
+              type="text"
+              required
+              autoComplete="name"
+              placeholder="O seu nome"
+              disabled={status === "loading"}
+              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] disabled:opacity-60"
+              aria-invalid={Boolean(errors.name)}
+              aria-describedby={errors.name ? "lead-name-err" : undefined}
+            />
+            {errors.name && (
+              <p id="lead-name-err" className="px-2 text-sm font-semibold text-[#FF5A4A]">{errors.name}</p>
+            )}
+
+            <label className="sr-only" htmlFor="lead-phone">Telemóvel / WhatsApp</label>
+            <input
+              id="lead-phone"
+              name="phone"
+              type="tel"
+              required
+              autoComplete="tel"
+              placeholder="WhatsApp / Telemóvel (ex: 931 428 476)"
+              disabled={status === "loading"}
+              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] disabled:opacity-60"
+              aria-invalid={Boolean(errors.phone)}
+              aria-describedby={errors.phone ? "lead-phone-err" : undefined}
+            />
+            {errors.phone && (
+              <p id="lead-phone-err" className="px-2 text-sm font-semibold text-[#FF5A4A]">{errors.phone}</p>
+            )}
+
+            <label className="sr-only" htmlFor="lead-message">Mensagem</label>
+            <textarea
+              id="lead-message"
+              name="message"
+              rows={3}
+              placeholder="Descreva brevemente a obra (opcional)"
+              disabled={status === "loading"}
+              className="resize-none rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] disabled:opacity-60"
+              aria-invalid={Boolean(errors.message)}
+              aria-describedby={errors.message ? "lead-message-err" : undefined}
+            />
+            {errors.message && (
+              <p id="lead-message-err" className="px-2 text-sm font-semibold text-[#FF5A4A]">{errors.message}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="mt-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-[#FF7A1A] px-8 py-4 text-base font-bold text-white transition hover:bg-[#E56A0E] disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              {status === "loading" ? (
+                <>
+                  <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.3" strokeWidth="3" />
+                    <path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  </svg>
+                  A enviar…
+                </>
+              ) : (
+                "Pedir Orçamento"
+              )}
+            </button>
+
+            {errors._ && (
+              <p className="rounded-xl bg-[#FFE9E5] px-4 py-3 text-center text-sm font-semibold text-[#B23A2C]" role="alert">
+                {errors._}
+              </p>
+            )}
+          </form>
+        )}
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
-          <a href={PHONES.waLink} className="inline-flex items-center gap-2 font-semibold hover:text-white">
+          <a href={PHONES.waLink} className="inline-flex items-center gap-2 font-semibold hover:text-white" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
             {PHONES.primary}
           </a>
           <span className="hidden sm:block">·</span>
-          <span>Ou liga directamente: <a href={`tel:${PHONES.secondary.replace(/\s/g, "")}`} className="font-bold">{PHONES.secondary}</a></span>
+          <span>Ou ligue directamente: <a href={`tel:${PHONES.secondary.replace(/\s/g, "")}`} className="font-bold">{PHONES.secondary}</a></span>
         </div>
       </div>
     </section>
