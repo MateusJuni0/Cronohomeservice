@@ -153,7 +153,7 @@ const localBusinessJsonLd = {
     },
   ],
   image: `${SITE_URL}/og-default.jpg`,
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}/logo.webp`,
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Serviços de Remodelação",
