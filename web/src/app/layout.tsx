@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`,
+        url: `${SITE_URL}/og-default.jpg`,
         width: 1200,
         height: 630,
         alt: "Cronograma Home Service — Remodelações e Obras em Lisboa",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     title: "Cronograma Home Service — Remodelações em Lisboa",
     description:
       "Remodelações de alta qualidade em Lisboa. Cozinhas, casas de banho, pintura, instalações. Orçamento fixo, garantia 5 anos.",
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/og-default.jpg`],
   },
   robots: {
     index: true,
@@ -152,7 +152,7 @@ const localBusinessJsonLd = {
       closes: "13:00",
     },
   ],
-  image: `${SITE_URL}/og-image.jpg`,
+  image: `${SITE_URL}/og-default.jpg`,
   logo: `${SITE_URL}/logo.png`,
   hasOfferCatalog: {
     "@type": "OfferCatalog",
