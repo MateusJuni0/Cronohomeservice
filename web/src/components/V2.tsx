@@ -279,11 +279,11 @@ function ServicesCategoryGrid() {
             13 áreas, 1 equipa
           </p>
           <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
-            O que precisares, nós resolvemos.
+            O que precisar, nós resolvemos.
           </h2>
           <p className="mt-5 text-base text-[#4A5568] sm:text-lg">
             Da casa de banho à fachada, da canalização ao jardim. Uma só
-            empresa para tudo o que a tua casa precisa.
+            empresa para tudo o que a sua casa precisa.
           </p>
         </div>
 
@@ -347,8 +347,8 @@ function PressBand() {
    ------------------------------------------------------------------------- */
 function HowItWorks() {
   const steps = [
-    { n: 1, title: "Pede o orçamento", text: "Envia uma foto e a descrição pelo WhatsApp ou formulário." },
-    { n: 2, title: "Visita técnica grátis", text: "Vamos a casa avaliar e damos-te um preço fechado em 24h." },
+    { n: 1, title: "Peça o orçamento", text: "Envie uma foto e a descrição pelo WhatsApp ou formulário." },
+    { n: 2, title: "Visita técnica grátis", text: "Vamos a casa avaliar e damos-lhe um preço fechado em 24h." },
     { n: 3, title: "Obra com gestor único", text: "Um só interlocutor no WhatsApp do início ao fim." },
   ];
 
@@ -368,7 +368,7 @@ function HowItWorks() {
             <br />à chave na mão.
           </h2>
           <p className="mt-5 max-w-md text-lg text-[#4A5568]">
-            Um processo simples, directo e sem surpresas. Sabes o preço antes de começar e tens um responsável único durante toda a obra.
+            Um processo simples, directo e sem surpresas. Sabe o preço antes de começar e tem um responsável único durante toda a obra.
           </p>
 
           <ol className="mt-10 space-y-6">
@@ -623,7 +623,7 @@ function ServicesGrid() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">Serviços</p>
           <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
-            O que precisares, nós tratamos.
+            O que precisar, nós tratamos.
           </h2>
           <p className="mt-5 text-lg text-[#4A5568]">
             Uma equipa, uma empresa, uma responsabilidade. Preços claros, com desconto para quem pede orçamento online.
@@ -686,7 +686,7 @@ function BeforeAfterLight() {
             A prova: do antes ao depois.
           </h2>
           <p className="mt-5 text-lg text-[#4A5568]">
-            Arrasta para veres a transformação. Obras reais, clientes reais.
+            Arraste para ver a transformação. Obras reais, clientes reais.
           </p>
         </div>
 
@@ -781,8 +781,8 @@ function ServicesGallery() {
 function Method() {
   const steps = [
     { n: "01", title: "Visita técnica", text: "Vamos a casa avaliar o trabalho sem qualquer compromisso." },
-    { n: "02", title: "Orçamento fechado", text: "Recebes um preço fixo em 24h — inclui tudo, sem surpresas." },
-    { n: "03", title: "Obra com gestor único", text: "Um responsável contigo no WhatsApp durante toda a obra." },
+    { n: "02", title: "Orçamento fechado", text: "Recebe um preço fixo em 24h — inclui tudo, sem surpresas." },
+    { n: "03", title: "Obra com gestor único", text: "Um responsável consigo no WhatsApp durante toda a obra." },
     { n: "04", title: "Entrega limpa", text: "Entregamos a chave e a casa limpa, prontinha a habitar." },
   ];
 
@@ -798,7 +798,7 @@ function Method() {
           </div>
           <p className="text-lg text-white/75">
             Nós tratamos da câmara, das plantas, dos materiais e do entulho.
-            O teu único trabalho é escolher os acabamentos.
+            O seu único trabalho é escolher os acabamentos.
           </p>
         </div>
 
@@ -852,8 +852,8 @@ function FAQSection() {
   const faqs = [
     { q: "Como garantem que o orçamento não aumenta?", a: "Fazemos um levantamento exaustivo antes de apresentar o orçamento. O preço é fixo e inclui mão-de-obra, materiais e acabamentos. Só muda se o cliente pedir alterações ao projecto original." },
     { q: "Preciso de sair de casa durante a obra?", a: "Na maioria dos casos, não. Organizamos o trabalho por fases para minimizar o impacto no dia-a-dia. Em obras maiores, avisamos os dias críticos com antecedência." },
-    { q: "Quanto tempo demora uma remodelação de casa de banho?", a: "Entre 2 a 4 semanas, dependendo da complexidade. Damos-te o prazo exacto no orçamento e cumprimos rigorosamente." },
-    { q: "Trabalham com materiais que eu já comprei?", a: "Sim. Se já tens materiais preferidos, nós aplicamos. Caso contrário, trabalhamos com Margres, Roca, Grohe e CIN com condições especiais." },
+    { q: "Quanto tempo demora uma remodelação de casa de banho?", a: "Entre 2 a 4 semanas, dependendo da complexidade. Damos-lhe o prazo exacto no orçamento e cumprimos rigorosamente." },
+    { q: "Trabalham com materiais que eu já comprei?", a: "Sim. Se já tem materiais preferidos, nós aplicamos. Caso contrário, trabalhamos com Margres, Roca, Grohe e CIN com condições especiais." },
     { q: "E se aparecerem problemas ocultos durante a obra?", a: "Antes de iniciar fazemos uma inspecção técnica. Se surgir algo inesperado contactamos imediatamente, explicamos e apresentamos opções com custos antes de avançar. Sem surpresas." },
     { q: "Tratam da limpeza no final?", a: "Sim. Deixamos a casa pronta a habitar — sem poeiras, sem entulho e sem restos de obra." },
   ];
@@ -864,7 +864,7 @@ function FAQSection() {
         <div className="text-center">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">Perguntas frequentes</p>
           <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
-            Tira as dúvidas antes
+            Tire as dúvidas antes
             <br />de pedir orçamento.
           </h2>
         </div>
@@ -909,12 +909,12 @@ function LeadCTA() {
 
       <div className="relative mx-auto max-w-4xl px-5 text-center lg:px-8">
         <h2 className="text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
-          Pede o teu orçamento grátis.
+          Peça o seu orçamento grátis.
           <br />
           Resposta em 24 horas.
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg text-white/80">
-          Envia-nos uma mensagem com o que precisas. Recebes o preço fechado no WhatsApp.
+          Envie-nos uma mensagem com o que precisa. Recebe o preço fechado no WhatsApp.
         </p>
 
         <form
@@ -923,7 +923,7 @@ function LeadCTA() {
         >
           <input
             type="text"
-            placeholder="O teu nome"
+            placeholder="O seu nome"
             className="flex-1 rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] sm:rounded-full"
           />
           <input
