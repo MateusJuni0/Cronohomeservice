@@ -899,66 +899,60 @@ function FAQSection() {
 }
 
 /* -------------------------------------------------------------------------
-   Lead CTA — formulário ligado a /api/leads com loading/success/error states
+   Lead CTA — formulário que abre o email do utilizador (mailto:)
+   pré-preenchido com o pedido de orçamento. Zero infra externa.
+   TODO: substituir CRONO_EMAIL pelo endereço real quando o cliente confirmar.
    ------------------------------------------------------------------------- */
-type LeadStatus = "idle" | "loading" | "success" | "error";
+type LeadStatus = "idle" | "success" | "error";
 
-function getLeadSource(): string {
-  if (typeof window === "undefined") return "website-v2";
-  const params = new URLSearchParams(window.location.search);
-  const utmSource = params.get("utm_source");
-  const utmMedium = params.get("utm_medium");
-  const utmCampaign = params.get("utm_campaign");
-  if (utmSource) {
-    return [utmSource, utmMedium, utmCampaign].filter(Boolean).join(" / ");
-  }
-  const ref = typeof document !== "undefined" ? document.referrer : "";
-  if (ref) {
-    try { return `referrer: ${new URL(ref).hostname}`; } catch { /* noop */ }
-  }
-  return "website-v2";
-}
+const CRONO_EMAIL = "grupocronograma@hotmail.com";
 
 function LeadCTA() {
   const [status, setStatus] = useState<LeadStatus>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    setStatus("loading");
-    setErrors({});
+    const name = String(data.get("name") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
 
-    try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.get("name"),
-          phone: data.get("phone"),
-          message: data.get("message"),
-          source: getLeadSource(),
-        }),
-      });
-      const json = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        errors?: Record<string, string>;
-      };
-
-      if (!res.ok || !json.ok) {
-        setErrors(json.errors ?? { _: "Não foi possível enviar. Tente outra vez." });
-        setStatus("error");
-        return;
-      }
-
-      form.reset();
-      setStatus("success");
-    } catch {
-      setErrors({ _: "Erro de ligação. Tente outra vez ou contacte-nos pelo WhatsApp." });
+    const nextErrors: Record<string, string> = {};
+    if (name.length < 2) nextErrors.name = "Indique o seu nome.";
+    if (phone.length < 9) nextErrors.phone = "Indique o seu contacto.";
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
       setStatus("error");
+      return;
     }
+
+    const subject = `Pedido de orçamento — ${name}`;
+    const bodyLines = [
+      "Olá,",
+      "",
+      "Gostaria de pedir um orçamento.",
+      "",
+      `Nome: ${name}`,
+      `WhatsApp: ${phone}`,
+      "",
+      "Pedido:",
+      message || "(sem detalhes adicionais)",
+      "",
+      "— Enviado via cronohomeservice.pt",
+    ];
+    const mailto = `mailto:${CRONO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+    // Open the user's mail client with the pre-filled message.
+    if (typeof window !== "undefined") {
+      window.location.href = mailto;
+    }
+
+    form.reset();
+    setErrors({});
+    setStatus("success");
   }
 
   return (
@@ -985,10 +979,11 @@ function LeadCTA() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-black text-[#0B1E3A]">Obrigado, recebemos o seu pedido.</h3>
+                <h3 className="text-xl font-black text-[#0B1E3A]">Falta um clique no seu email.</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-[#4A5568]">
-                  Em 24 horas enviamos resposta directa pelo seu WhatsApp.
-                  Para uma conversa imediata, ligue-nos ou escreva-nos abaixo.
+                  Abrimos a sua aplicação de email com o pedido pronto a enviar.
+                  Confirme e carregue em <strong>Enviar</strong> &mdash; respondemos em 24 horas.
+                  Se preferir, fale connosco directamente pelo WhatsApp abaixo.
                 </p>
               </div>
             </div>
@@ -1007,8 +1002,7 @@ function LeadCTA() {
               required
               autoComplete="name"
               placeholder="O seu nome"
-              disabled={status === "loading"}
-              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] disabled:opacity-60"
+              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]"
               aria-invalid={Boolean(errors.name)}
               aria-describedby={errors.name ? "lead-name-err" : undefined}
             />
@@ -1024,8 +1018,7 @@ function LeadCTA() {
               required
               autoComplete="tel"
               placeholder="WhatsApp / Telemóvel (ex: 931 428 476)"
-              disabled={status === "loading"}
-              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] disabled:opacity-60"
+              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]"
               aria-invalid={Boolean(errors.phone)}
               aria-describedby={errors.phone ? "lead-phone-err" : undefined}
             />
@@ -1039,8 +1032,7 @@ function LeadCTA() {
               name="message"
               rows={3}
               placeholder="Descreva brevemente a obra (opcional)"
-              disabled={status === "loading"}
-              className="resize-none rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF] disabled:opacity-60"
+              className="resize-none rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]"
               aria-invalid={Boolean(errors.message)}
               aria-describedby={errors.message ? "lead-message-err" : undefined}
             />
@@ -1050,27 +1042,10 @@ function LeadCTA() {
 
             <button
               type="submit"
-              disabled={status === "loading"}
-              className="mt-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-[#FF7A1A] px-8 py-4 text-base font-bold text-white transition hover:bg-[#E56A0E] disabled:cursor-not-allowed disabled:opacity-70"
+              className="mt-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-[#FF7A1A] px-8 py-4 text-base font-bold text-white transition hover:bg-[#E56A0E]"
             >
-              {status === "loading" ? (
-                <>
-                  <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.3" strokeWidth="3" />
-                    <path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                  </svg>
-                  A enviar…
-                </>
-              ) : (
-                "Pedir Orçamento"
-              )}
+              Pedir Orçamento
             </button>
-
-            {errors._ && (
-              <p className="rounded-xl bg-[#FFE9E5] px-4 py-3 text-center text-sm font-semibold text-[#B23A2C]" role="alert">
-                {errors._}
-              </p>
-            )}
           </form>
         )}
 
