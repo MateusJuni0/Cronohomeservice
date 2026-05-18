@@ -67,8 +67,8 @@ function Header() {
 
         {/* RIGHT — desktop nav (2 links) + CTA / mobile hamburger */}
         <div className="hidden items-center gap-6 justify-self-end lg:flex">
-          <a href="#avaliacoes" className={linkClass}>Avaliações</a>
           <a href="#faq" className={linkClass}>FAQ</a>
+          <a href="/portfolio" className={linkClass}>Portefólio</a>
           <a
             href="#orcamento"
             className="rounded-full bg-[#FF7A1A] px-5 py-2.5 text-sm font-bold text-white shadow-[0_6px_20px_rgba(255,122,26,0.35)] transition hover:-translate-y-0.5 hover:bg-[#E56A0E]"
@@ -107,7 +107,7 @@ function Header() {
               ["Serviços", "#servicos"],
               ["Método", "#metodo"],
               ["Antes & Depois", "#portfolio"],
-              ["Avaliações", "#avaliacoes"],
+              ["Portefólio", "/portfolio"],
               ["FAQ", "#faq"],
             ].map(([label, href]) => (
               <a
@@ -148,17 +148,14 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:px-8 lg:py-28">
         <div>
-          <div className="mb-6 flex items-center gap-3">
-            <span className="text-5xl font-black leading-none text-white">4,9</span>
-            <span className="text-2xl font-bold text-white/80">/5</span>
-            <div className="ml-2 flex">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="#FFD36B">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-              ))}
-            </div>
-            <span className="ml-1 text-sm font-semibold text-white/85">+120 clientes</span>
+          <div className="mb-6 inline-flex items-center gap-2.5 rounded-full bg-white/10 px-4 py-2 ring-1 ring-white/20 backdrop-blur">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD36B" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 12l2 2 4-4" />
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span className="text-sm font-semibold tracking-wide text-white">
+              Garantia escrita em todas as obras
+            </span>
           </div>
 
           <h1 className="text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl lg:text-[68px]">
@@ -211,38 +208,30 @@ function Hero() {
           </div>
         </div>
 
-        {/* Illustration — círculo + SVG original (sem fotos de pessoas) */}
-        <div className="relative mx-auto aspect-square w-full max-w-[480px]">
-          {/* círculo exterior */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#3E6FD8] to-[#173FA3] shadow-[0_40px_100px_rgba(0,0,0,0.35)] ring-8 ring-white/10" />
-          {/* círculo interno com padrão */}
-          <div className="absolute inset-6 rounded-full bg-gradient-to-br from-[#5785E0] to-[#1E4FBF] ring-4 ring-[#FFD36B]/60" />
-          {/* Logo Crono Home Service */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative h-[72%] w-[72%] overflow-hidden rounded-full bg-white shadow-[0_30px_80px_rgba(0,0,0,0.35)] ring-4 ring-white">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/logo-crono.jpeg"
-                alt="Crono Home Service — logótipo"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            {/* faíscas decorativas à volta */}
-            <svg className="pointer-events-none absolute inset-0" viewBox="0 0 400 400" fill="none">
-              <circle cx="340" cy="110" r="5" fill="#FFD36B" />
-              <circle cx="60" cy="140" r="4" fill="#FFD36B" />
-              <circle cx="350" cy="260" r="4" fill="#FFD36B" />
-              <circle cx="50" cy="280" r="5" fill="#FFD36B" />
-              <path d="M55 90 L71 90 M63 82 L63 98" stroke="#FFD36B" strokeWidth="4" strokeLinecap="round" />
-              <path d="M335 310 L351 310 M343 302 L343 318" stroke="#FFD36B" strokeWidth="4" strokeLinecap="round" />
-            </svg>
+        {/* Hero photo — sala de estar remodelada, magazine cover quality */}
+        <div className="relative mx-auto w-full max-w-[560px]">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#0B1E3A] shadow-[0_40px_100px_rgba(0,0,0,0.35)] ring-1 ring-white/10">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/hero-living-room.jpg"
+              alt="Sala de estar moderna remodelada pela Crono Home Service"
+              className="h-full w-full object-cover"
+            />
+            {/* leve gradient para integrar com o azul do hero */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gradient-to-tr from-[#0B1E3A]/30 via-transparent to-transparent"
+            />
           </div>
 
           {/* floating badge — resposta 24h */}
-          <div className="absolute -bottom-4 -left-6 rounded-2xl bg-white p-4 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+          <div className="absolute -bottom-5 -left-5 rounded-2xl bg-white p-4 shadow-[0_20px_50px_rgba(0,0,0,0.35)] sm:-left-8">
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FF7A1A]/15">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" strokeWidth="2.5" strokeLinecap="round"><path d="M12 6v6l4 2" /><circle cx="12" cy="12" r="10" /></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M12 6v6l4 2" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-wider text-[#6B7587]">Resposta em</p>
@@ -252,7 +241,7 @@ function Hero() {
           </div>
 
           {/* floating badge — garantia */}
-          <div className="absolute -top-3 -right-3 rounded-2xl bg-[#FF7A1A] px-4 py-3 text-white shadow-[0_20px_50px_rgba(255,122,26,0.5)]">
+          <div className="absolute -top-4 -right-4 rounded-2xl bg-[#FF7A1A] px-4 py-3 text-white shadow-[0_20px_50px_rgba(255,122,26,0.5)]">
             <p className="text-[10px] font-bold uppercase tracking-wider text-white/80">Garantia</p>
             <p className="text-xl font-black leading-none">5 anos</p>
           </div>
@@ -670,6 +659,21 @@ const BA_PROJECTS = [
     after: "/gallery/obra-sala-oeiras.jpg",
     label: "Sala de Estar — Oeiras, 2024",
   },
+  {
+    before: "/ba/quarto-antes.jpg",
+    after: "/gallery/obra-quarto-lisboa.jpg",
+    label: "Quarto Principal — Lisboa, 2024",
+  },
+  {
+    before: "/ba/wc-pretos-antes.jpg",
+    after: "/gallery/obra-wc-cascais-pretos.jpg",
+    label: "Casa de Banho Premium — Cascais, 2024",
+  },
+  {
+    before: "/ba/cozinha-sintra-antes.jpg",
+    after: "/gallery/obra-cozinha-sintra.jpg",
+    label: "Cozinha Minimalista — Sintra, 2024",
+  },
 ];
 
 function BeforeAfterLight() {
@@ -834,60 +838,10 @@ function Method() {
 }
 
 /* -------------------------------------------------------------------------
-   Reviews
+   Reviews — secção desactivada até o cliente fornecer ≥3 testemunhos reais.
+   TODO: re-enable quando CLIENTE_CHECKLIST.md (Important / Testimonials) fechar.
+   Cada review precisa: nome verificável, cidade, foto opcional, autorização escrita.
    ------------------------------------------------------------------------- */
-function Reviews() {
-  const items = [
-    {
-      name: "Maria Santos",
-      city: "Lumiar, Lisboa",
-      stars: 5,
-      text: "A equipa foi incrivelmente profissional. A nossa cozinha ficou irreconhecível e entregaram no prazo prometido. Recomendo sem hesitar.",
-    },
-    {
-      name: "João Ferreira",
-      city: "Cascais",
-      stars: 5,
-      text: "Obra entregue dentro do prazo e do orçamento, como combinado. O gestor do projecto manteve-nos informados todos os dias.",
-    },
-    {
-      name: "Ana Costa",
-      city: "Oeiras",
-      stars: 5,
-      text: "Finalmente uma empresa que cumpre. A remodelação da casa de banho foi impecável e deixaram tudo limpo no final.",
-    },
-  ];
-
-  return (
-    <section id="avaliacoes" className="bg-[#F5F7FA] py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">Avaliações</p>
-          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
-            4,9/5 em +120 clientes.
-          </h2>
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {items.map((r) => (
-            <div key={r.name} className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-[#E6EAF0]">
-              <div className="flex">
-                {Array.from({ length: r.stars }).map((_, i) => (
-                  <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill="#FFB547"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-                ))}
-              </div>
-              <p className="mt-4 text-[15px] leading-relaxed text-[#1A2238]">&ldquo;{r.text}&rdquo;</p>
-              <div className="mt-6 border-t border-[#E6EAF0] pt-4">
-                <p className="font-bold text-[#0B1E3A]">{r.name}</p>
-                <p className="text-sm text-[#4A5568]">{r.city}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* -------------------------------------------------------------------------
    FAQ
@@ -1096,7 +1050,7 @@ export default function V2Home() {
         <BeforeAfterLight />
         <ServicesGallery />
         <Method />
-        <Reviews />
+        {/* <Reviews /> — re-enable when client provides 3+ real testimonials */}
         <FAQSection />
         <LeadCTA />
       </main>

@@ -180,36 +180,9 @@ const localBusinessJsonLd = {
       },
     ],
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "127",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: [
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Maria Santos" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody: "A equipa foi incrivelmente profissional. A nossa cozinha ficou irreconhecível — e entregaram no prazo que prometeram. Recomendo sem hesitação.",
-      datePublished: "2024-09-15",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "João Ferreira" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody: "Obra entregue no prazo e no orçamento, como combinado. O gestor de projecto manteve-nos informados todos os dias.",
-      datePublished: "2024-08-20",
-    },
-    {
-      "@type": "Review",
-      author: { "@type": "Person", name: "Ana Costa" },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody: "Finalmente uma empresa que cumpre o que promete. A remodelação da casa de banho foi impecável e a equipa deixou tudo limpo no final.",
-      datePublished: "2024-07-10",
-    },
-  ],
+  // aggregateRating + review[] omitidos até o cliente fornecer testemunhos reais.
+  // Reactivar quando houver ≥3 reviews verificáveis (nome, cidade, foto opcional).
+  // Ver CLIENTE_CHECKLIST.md secção "Important".
   sameAs: [],
 };
 
