@@ -1160,9 +1160,32 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Cronograma Home Service. Todos os direitos reservados.</p>
-          <p>Desenvolvido por CMTecnologia</p>
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <nav aria-label="Links legais" className="mb-4 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold text-white/70">
+            <a href="/politica-privacidade" className="hover:text-[#FF7A1A]">Política de Privacidade</a>
+            <span className="text-white/20" aria-hidden="true">·</span>
+            <a href="/termos" className="hover:text-[#FF7A1A]">Termos &amp; Condições</a>
+            <span className="text-white/20" aria-hidden="true">·</span>
+            <a href="/cookies" className="hover:text-[#FF7A1A]">Política de Cookies</a>
+            <span className="text-white/20" aria-hidden="true">·</span>
+            <a href="/livro-reclamacoes" className="hover:text-[#FF7A1A]">Livro de Reclamações</a>
+            <span className="text-white/20" aria-hidden="true">·</span>
+            <a
+              href="https://www.livroreclamacoes.pt/Inicio/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-[#FF7A1A]"
+            >
+              Portal oficial
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" />
+              </svg>
+            </a>
+          </nav>
+          <div className="flex flex-col gap-3 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Cronograma Home Service. Todos os direitos reservados.</p>
+            <p>Desenvolvido por CMTecnologia</p>
+          </div>
         </div>
       </div>
     </footer>
