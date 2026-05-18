@@ -19,8 +19,10 @@ const ROOT = join(__dirname, "..");
 const OUT_SERVICES = join(ROOT, "public", "services");
 const OUT_GALLERY = join(ROOT, "public", "gallery");
 const OUT_OG = join(ROOT, "public");
+const OUT_BA = join(ROOT, "public", "ba");
 const RAW_SERVICES = join(ROOT, "public", "services", "raw");
 const RAW_GALLERY = join(ROOT, "public", "gallery", "raw");
+const RAW_BA = join(ROOT, "public", "ba", "raw");
 
 const FORCE = process.argv.includes("--force");
 const API_KEY = process.env.FAL_KEY || process.env.FAL_API_KEY;
@@ -79,6 +81,14 @@ const JOBS = [
   // 1 OG default (landscape_16_9 ~1024×576)
   { slug: "og-default", size: "landscape_16_9", dir: OUT_OG,
     prompt: "modern Portuguese home interior magazine cover, bright living room with floor-to-ceiling windows, neutral cream and beige palette, oak floor, linen sofa, brass accents, premium real estate hero shot, cinematic widescreen composition, 4K" },
+
+  // 3 BeforeAfter "antes" shots (landscape_4_3) — pair with existing /gallery/ "depois"
+  { slug: "wc-antes", size: "landscape_4_3", dir: OUT_BA, raw: RAW_BA,
+    prompt: "old run-down Portuguese bathroom needing renovation, peeling paint on walls, dated cracked tiles in faded green and beige, broken chrome fixtures, exposed pipes, dim yellowish lighting, real estate before-renovation photography, neutral muted colors, photo realistic" },
+  { slug: "cozinha-antes", size: "landscape_4_3", dir: OUT_BA, raw: RAW_BA,
+    prompt: "outdated Portuguese kitchen needing complete renovation, old worn yellow laminated cabinets, scratched vinyl floor, dated 1980s appliances, stained countertop, dim yellowish lighting, professional real estate before-renovation photography, photo realistic" },
+  { slug: "sala-antes", size: "landscape_4_3", dir: OUT_BA, raw: RAW_BA,
+    prompt: "old Portuguese living room before renovation, peeling and stained walls, dated faded floral wallpaper, worn scratched parquet floor, empty room with damaged baseboard, dim daylight, professional real estate before-makeover photography, photo realistic" },
 ];
 
 async function exists(path) {
@@ -166,10 +176,13 @@ async function runBatch(jobs, batchSize = 4) {
 async function main() {
   await mkdir(OUT_SERVICES, { recursive: true });
   await mkdir(OUT_GALLERY, { recursive: true });
+  await mkdir(OUT_BA, { recursive: true });
   await mkdir(RAW_SERVICES, { recursive: true });
   await mkdir(RAW_GALLERY, { recursive: true });
+  await mkdir(RAW_BA, { recursive: true });
   await writeFile(join(RAW_SERVICES, ".gitignore"), "*\n!.gitignore\n");
   await writeFile(join(RAW_GALLERY, ".gitignore"), "*\n!.gitignore\n");
+  await writeFile(join(RAW_BA, ".gitignore"), "*\n!.gitignore\n");
 
   console.log(`\nGenerating ${JOBS.length} images via fal-ai/flux/dev...`);
   console.log(`Cost estimate: ~$${(JOBS.length * 0.04).toFixed(2)} USD\n`);

@@ -656,18 +656,18 @@ function ServicesGrid() {
    ------------------------------------------------------------------------- */
 const BA_PROJECTS = [
   {
-    before: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
-    label: "Casa de Banho — Lisboa, 2024",
+    before: "/ba/wc-antes.jpg",
+    after: "/gallery/obra-casa-banho-cascais.jpg",
+    label: "Casa de Banho — Cascais, 2024",
   },
   {
-    before: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
-    label: "Cozinha — Cascais, 2024",
+    before: "/ba/cozinha-antes.jpg",
+    after: "/gallery/obra-cozinha-lisboa.jpg",
+    label: "Cozinha — Lisboa, 2024",
   },
   {
-    before: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
+    before: "/ba/sala-antes.jpg",
+    after: "/gallery/obra-sala-oeiras.jpg",
     label: "Sala de Estar — Oeiras, 2024",
   },
 ];

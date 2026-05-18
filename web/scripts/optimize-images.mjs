@@ -16,6 +16,7 @@ const ROOT = join(__dirname, "..");
 const TARGETS = [
   { dir: join(ROOT, "public", "services"), maxW: 800 },
   { dir: join(ROOT, "public", "gallery"),  maxW: 1200 },
+  { dir: join(ROOT, "public", "ba"),       maxW: 1200 },
 ];
 const OG = join(ROOT, "public", "og-default.jpg");
 
