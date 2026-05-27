@@ -10,16 +10,16 @@ import { Slider as BeforeAfterSlider } from "./BeforeAfter";
    ========================================================================= */
 
 const BRAND = {
-  blue: "#1E4FBF",
-  blueDark: "#173FA3",
-  navy: "#0B1E3A",
+  blue: "#475345",
+  blueDark: "#3D4A3A",
+  navy: "#1F2419",
   orange: "#FF7A1A",
   orangeDark: "#E56A0E",
-  ink: "#1A2238",
-  muted: "#4A5568",
-  line: "#E6EAF0",
-  bg: "#F5F7FA",
-  bgSoft: "#EEF2F8",
+  ink: "#2A2F23",
+  muted: "#5C6450",
+  line: "#E6E2DB",
+  bg: "#F7F5EF",
+  bgSoft: "#EFECE4",
 };
 
 const PHONES = {
@@ -35,19 +35,17 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   const linkClass =
-    "text-[14px] font-semibold tracking-wide text-[#1A2238] transition hover:text-[#1E4FBF]";
+    "text-[14px] font-semibold tracking-wide text-[#2A2F23] transition hover:text-[#475345]";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#E6EAF0] bg-white/95 backdrop-blur">
-      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 py-4 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-[#E6E2DB] bg-[#F7F2E7]/85 backdrop-blur">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-center gap-4 px-5 py-4 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-8">
         {/* LEFT — desktop nav (3 links) / mobile spacer */}
         <nav className="hidden items-center gap-7 justify-self-start lg:flex">
           <a href="#servicos" className={linkClass}>Serviços</a>
           <a href="#metodo" className={linkClass}>Método</a>
           <a href="#portfolio" className={linkClass}>Antes &amp; Depois</a>
         </nav>
-        <span className="block lg:hidden" aria-hidden="true" />
-
         {/* CENTER — logo (always centered) */}
         <a
           href="#top"
@@ -56,13 +54,10 @@ function Header() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-crono.jpeg"
-            alt="Crono Home Service"
-            className="h-10 w-10 rounded-lg object-cover ring-1 ring-[#E6EAF0] sm:h-11 sm:w-11"
+            src="/logo-cronograma.png"
+            alt="Grupo Cronograma Home Service"
+            className="h-12 w-auto object-contain sm:h-14 lg:h-16"
           />
-          <span className="text-lg font-black tracking-tight text-[#0B1E3A] sm:text-xl">
-            CRONO<span className="text-[#FF7A1A]">.</span>
-          </span>
         </a>
 
         {/* RIGHT — desktop nav (2 links) + CTA / mobile hamburger */}
@@ -78,12 +73,12 @@ function Header() {
         </div>
         <button
           onClick={() => setOpen((v) => !v)}
-          className="justify-self-end lg:hidden"
+          className="absolute right-5 top-1/2 -translate-y-1/2 lg:hidden"
           aria-label="Menu"
           aria-expanded={open}
           type="button"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0B1E3A" strokeWidth="2.2" strokeLinecap="round">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1F2419" strokeWidth="2.2" strokeLinecap="round">
             {open ? (
               <>
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -101,7 +96,7 @@ function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-[#E6EAF0] bg-white lg:hidden">
+        <div className="border-t border-[#E6E2DB] bg-[#F7F2E7]/95 lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4">
             {[
               ["Serviços", "#servicos"],
@@ -114,7 +109,7 @@ function Header() {
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-base font-semibold text-[#1A2238] hover:bg-[#F5F7FA]"
+                className="rounded-lg px-3 py-3 text-base font-semibold text-[#2A2F23] hover:bg-[#F7F5EF]"
               >
                 {label}
               </a>
@@ -140,41 +135,46 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-gradient-to-br from-[#1E4FBF] via-[#1E4FBF] to-[#173FA3] text-white"
+      className="relative overflow-hidden bg-blueprint-light text-[#1F2419]"
     >
-      {/* decorative blobs */}
-      <div className="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-white/5 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 right-0 h-[520px] w-[520px] rounded-full bg-[#FF7A1A]/15 blur-3xl" />
+      {/* subtle decorative blob */}
+      <div className="pointer-events-none absolute -bottom-40 right-0 h-[520px] w-[520px] rounded-full bg-[#FF7A1A]/8 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:px-8 lg:py-28">
-        <div>
-          <div className="mb-6 inline-flex items-center gap-2.5 rounded-full bg-white/10 px-4 py-2 ring-1 ring-white/20 backdrop-blur">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD36B" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 12l2 2 4-4" />
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:gap-16 lg:px-8 lg:py-28">
+        <div className="text-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* Hero logo — dominante (pedido cliente 2026-05-27): XL size, centrado em todos os breakpoints */}
+          <img
+            src="/logo-cronograma.png"
+            alt="Grupo Cronograma Home Service"
+            className="mx-auto mb-7 block h-72 w-auto object-contain drop-shadow-2xl sm:h-96 lg:h-[28rem]"
+          />
+
+          <div className="mx-auto mb-6 inline-flex items-center gap-2.5 rounded-full bg-[#3D4A3A]/10 px-4 py-2 ring-1 ring-[#3D4A3A]/30 backdrop-blur">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3D4A3A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4l3 2" strokeLinecap="round" />
             </svg>
-            <span className="text-sm font-semibold tracking-wide text-white">
-              Garantia escrita em todas as obras
+            <span className="text-sm font-semibold tracking-wide text-[#1F2419]">
+              Orçamento em 24 horas
             </span>
           </div>
 
-          <h1 className="text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl lg:text-[68px]">
-            Remodelações e obras
+          <h1 className="text-5xl font-black leading-[0.95] tracking-tight text-[#1F2419] sm:text-6xl lg:text-[68px]">
+            A sua casa,
             <br />
-            com preço fixo e
-            <br />
-            garantia de 5 anos
+            em mãos certas
           </h1>
 
-          <p className="mt-7 max-w-xl text-lg text-white/85 sm:text-xl">
-            Chega de telefonemas infinitos, surpresas no orçamento e promessas
-            por cumprir. Uma equipa, um responsável, uma entrega chave-na-mão.
+          <p className="mx-auto mt-7 max-w-xl text-lg text-[#1F2419]/80 sm:text-xl">
+            Remodelações, reparações e decoração. Orçamento fixo em 24 horas,
+            entrega chave-na-mão. Sem surpresas.
           </p>
 
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
             <a
               href="#orcamento"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-5 text-base font-black text-[#1E4FBF] shadow-[0_12px_40px_rgba(0,0,0,0.25)] transition hover:-translate-y-0.5 hover:bg-[#F5F7FA]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1A1A1A] px-9 py-5 text-base font-black text-white shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition hover:-translate-y-0.5 hover:bg-[#2A2A2A]"
             >
               Pedir Orçamento Grátis
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round">
@@ -185,32 +185,32 @@ function Hero() {
               href={PHONES.waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/40 bg-white/5 px-8 py-5 text-base font-bold text-white backdrop-blur transition hover:border-white hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#3D4A3A]/40 bg-[#3D4A3A]/5 px-8 py-5 text-base font-bold text-[#1F2419] backdrop-blur transition hover:border-[#3D4A3A] hover:bg-[#3D4A3A]/10"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.4 5.4 4.7.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z" /></svg>
               WhatsApp direto
             </a>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-white/85">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-sm text-[#1F2419]/80">
             <span className="inline-flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" strokeWidth="2.8"><path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              +20 anos de experiência
+              Equipa própria
             </span>
             <span className="inline-flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" strokeWidth="2.8"><path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              Garantia 5 anos
+              Orçamento em 24 horas
             </span>
             <span className="inline-flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" strokeWidth="2.8"><path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-              Orçamento em 24h
+              Entrega chave-na-mão
             </span>
           </div>
         </div>
 
         {/* Hero photo — sala de estar remodelada, magazine cover quality */}
         <div className="relative mx-auto w-full max-w-[560px]">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#0B1E3A] shadow-[0_40px_100px_rgba(0,0,0,0.35)] ring-1 ring-white/10">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#1F2419] shadow-[0_40px_100px_rgba(0,0,0,0.35)] ring-1 ring-white/10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/hero-living-room.jpg"
@@ -220,7 +220,7 @@ function Hero() {
             {/* leve gradient para integrar com o azul do hero */}
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-tr from-[#0B1E3A]/30 via-transparent to-transparent"
+              className="absolute inset-0 bg-gradient-to-tr from-[#1F2419]/30 via-transparent to-transparent"
             />
           </div>
 
@@ -235,15 +235,9 @@ function Hero() {
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-wider text-[#6B7587]">Resposta em</p>
-                <p className="text-base font-black text-[#0B1E3A]">24 horas</p>
+                <p className="text-base font-black text-[#1F2419]">24 horas</p>
               </div>
             </div>
-          </div>
-
-          {/* floating badge — garantia */}
-          <div className="absolute -top-4 -right-4 rounded-2xl bg-[#FF7A1A] px-4 py-3 text-white shadow-[0_20px_50px_rgba(255,122,26,0.5)]">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-white/80">Garantia</p>
-            <p className="text-xl font-black leading-none">5 anos</p>
           </div>
         </div>
       </div>
@@ -272,16 +266,16 @@ const SERVICE_CATEGORIES: Array<{ slug: string; label: string }> = [
 
 function ServicesCategoryGrid() {
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-blueprint-light py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">
             13 áreas, 1 equipa
           </p>
-          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-black leading-tight text-[#1F2419] sm:text-4xl lg:text-5xl">
             O que precisar, nós resolvemos.
           </h2>
-          <p className="mt-5 text-base text-[#4A5568] sm:text-lg">
+          <p className="mt-5 text-base text-[#5C6450] sm:text-lg">
             Da casa de banho à fachada, da canalização ao jardim. Uma só
             empresa para tudo o que a sua casa precisa.
           </p>
@@ -294,7 +288,7 @@ function ServicesCategoryGrid() {
                 href="#servicos"
                 className="group mx-auto flex flex-col items-center gap-3 text-center"
               >
-                <div className="relative aspect-square w-[88px] overflow-hidden rounded-full bg-[#F5F7FA] ring-2 ring-[#E6EAF0] transition duration-300 group-hover:-translate-y-1 group-hover:ring-[#1E4FBF] group-hover:shadow-[0_12px_32px_rgba(30,79,191,0.25)] sm:w-[96px] lg:w-[112px]">
+                <div className="relative aspect-square w-[88px] overflow-hidden rounded-full bg-[#F7F5EF] ring-2 ring-[#E6E2DB] transition duration-300 group-hover:-translate-y-1 group-hover:ring-[#475345] group-hover:shadow-[0_12px_32px_rgba(71,83,69,0.25)] sm:w-[96px] lg:w-[112px]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/services/${cat.slug}.jpg`}
@@ -307,7 +301,7 @@ function ServicesCategoryGrid() {
                     className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/40"
                   />
                 </div>
-                <span className="max-w-[110px] text-[12px] font-semibold leading-tight text-[#0B1E3A] sm:text-[13px] lg:text-sm">
+                <span className="max-w-[110px] text-[12px] font-semibold leading-tight text-[#1F2419] sm:text-[13px] lg:text-sm">
                   {cat.label}
                 </span>
               </a>
@@ -323,23 +317,7 @@ function ServicesCategoryGrid() {
    Press / Trust band
    ------------------------------------------------------------------------- */
 function PressBand() {
-  const items = ["Margres", "Roca", "CIN", "Grohe", "Pladur", "Weber"];
-  return (
-    <section className="border-y border-[#E6EAF0] bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
-        <p className="mb-6 text-center text-xs font-bold uppercase tracking-widest text-[#4A5568]">
-          Trabalhamos com as melhores marcas
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 opacity-60">
-          {items.map((name) => (
-            <span key={name} className="text-xl font-black tracking-tight text-[#0B1E3A]">
-              {name}
-            </span>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return null;
 }
 
 /* -------------------------------------------------------------------------
@@ -359,27 +337,27 @@ function HowItWorks() {
   ];
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-blueprint-light py-20 lg:py-28">
       <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1fr_1.2fr] lg:px-8">
         <div>
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">Como funciona</p>
-          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-black leading-tight text-[#1F2419] sm:text-4xl lg:text-5xl">
             Do primeiro contacto
             <br />à chave na mão.
           </h2>
-          <p className="mt-5 max-w-md text-lg text-[#4A5568]">
+          <p className="mt-5 max-w-md text-lg text-[#5C6450]">
             Um processo simples, directo e sem surpresas. Sabe o preço antes de começar e tem um responsável único durante toda a obra.
           </p>
 
           <ol className="mt-10 space-y-6">
             {steps.map((s) => (
               <li key={s.n} className="flex gap-5">
-                <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[#1E4FBF] text-lg font-black text-white">
+                <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-[#475345] text-lg font-black text-white">
                   {s.n}
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#0B1E3A]">{s.title}</h3>
-                  <p className="mt-1 text-[#4A5568]">{s.text}</p>
+                  <h3 className="text-lg font-bold text-[#1F2419]">{s.title}</h3>
+                  <p className="mt-1 text-[#5C6450]">{s.text}</p>
                 </div>
               </li>
             ))}
@@ -390,9 +368,9 @@ function HowItWorks() {
           {cards.map((c) => (
             <div
               key={c.title}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-[#E6EAF0] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-[#E6E2DB] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#0B1E3A]">
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#1F2419]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={c.img}
@@ -404,7 +382,7 @@ function HowItWorks() {
                   aria-hidden="true"
                   className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/25"
                 />
-                <div className="absolute left-4 top-4 rounded-full bg-[#0B1E3A]/90 px-3 py-1.5 text-xs font-bold text-white shadow-md backdrop-blur-sm">
+                <div className="absolute left-4 top-4 rounded-full bg-[#1F2419]/90 px-3 py-1.5 text-xs font-bold text-white shadow-md backdrop-blur-sm">
                   Desde {c.from}
                 </div>
                 <h3 className="absolute bottom-4 left-4 right-4 text-base font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-lg">
@@ -412,8 +390,8 @@ function HowItWorks() {
                 </h3>
               </div>
               <div className="flex flex-1 items-center justify-between gap-3 p-5">
-                <span className="text-sm text-[#4A5568]">Preço fechado, com IVA</span>
-                <a href="#orcamento" className="inline-flex items-center gap-1 text-sm font-bold text-[#1E4FBF] hover:underline">
+                <span className="text-sm text-[#5C6450]">Preço fechado, com IVA</span>
+                <a href="#orcamento" className="inline-flex items-center gap-1 text-sm font-bold text-[#475345] hover:underline">
                   Pedir preço <span aria-hidden>→</span>
                 </a>
               </div>
@@ -556,9 +534,9 @@ function PriceTag({ from, was, off }: { from: string; was?: string; off?: string
   return (
     <div className="mt-3 flex flex-wrap items-baseline gap-2">
       {was && <span className="text-sm text-[#8A94A6] line-through">{was}</span>}
-      <span className="text-xl font-black text-[#1E4FBF]">{from}</span>
+      <span className="text-xl font-black text-[#475345]">{from}</span>
       {off && (
-        <span className="rounded-md bg-[#E6F0FF] px-2 py-0.5 text-xs font-bold text-[#1E4FBF]">
+        <span className="rounded-md bg-[#E9ECE3] px-2 py-0.5 text-xs font-bold text-[#475345]">
           {off}
         </span>
       )}
@@ -570,10 +548,10 @@ function CategoryRow({ category }: { category: ServiceCategory }) {
   return (
     <div className="mb-14 last:mb-0">
       <div className="mb-6 flex items-end justify-between gap-4">
-        <h3 className="text-2xl font-black text-[#0B1E3A] sm:text-3xl">{category.name}</h3>
+        <h3 className="text-2xl font-black text-[#1F2419] sm:text-3xl">{category.name}</h3>
         <a
           href="#orcamento"
-          className="whitespace-nowrap text-sm font-bold text-[#1E4FBF] hover:underline"
+          className="whitespace-nowrap text-sm font-bold text-[#475345] hover:underline"
         >
           Ver tudo →
         </a>
@@ -585,9 +563,9 @@ function CategoryRow({ category }: { category: ServiceCategory }) {
             <a
               key={item.title}
               href="#orcamento"
-              className="group block overflow-hidden rounded-2xl bg-white ring-1 ring-[#E6EAF0] transition hover:-translate-y-1 hover:ring-[#1E4FBF] hover:shadow-lg"
+              className="group block overflow-hidden rounded-2xl bg-white ring-1 ring-[#E6E2DB] transition hover:-translate-y-1 hover:ring-[#475345] hover:shadow-lg"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F7FA]">
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#F7F5EF]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={item.img}
@@ -602,7 +580,7 @@ function CategoryRow({ category }: { category: ServiceCategory }) {
                 )}
               </div>
               <div className="p-4">
-                <h4 className="line-clamp-2 min-h-[2.75rem] text-[15px] font-bold leading-tight text-[#0B1E3A]">
+                <h4 className="line-clamp-2 min-h-[2.75rem] text-[15px] font-bold leading-tight text-[#1F2419]">
                   {item.title}
                 </h4>
                 <PriceTag from={item.from} was={item.was} off={item.off} />
@@ -618,14 +596,14 @@ function CategoryRow({ category }: { category: ServiceCategory }) {
 
 function ServicesGrid() {
   return (
-    <section id="servicos" className="bg-[#EEF2F8] py-20 lg:py-28">
+    <section id="servicos" className="bg-blueprint-light py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">Serviços</p>
-          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-black leading-tight text-[#1F2419] sm:text-4xl lg:text-5xl">
             O que precisar, nós tratamos.
           </h2>
-          <p className="mt-5 text-lg text-[#4A5568]">
+          <p className="mt-5 text-lg text-[#5C6450]">
             Uma equipa, uma empresa, uma responsabilidade. Preços claros, com desconto para quem pede orçamento online.
           </p>
         </div>
@@ -678,21 +656,21 @@ const BA_PROJECTS = [
 
 function BeforeAfterLight() {
   return (
-    <section id="portfolio" className="bg-white py-20 lg:py-28">
+    <section id="portfolio" className="bg-blueprint-light py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">Portfólio</p>
-          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-black leading-tight text-[#1F2419] sm:text-4xl lg:text-5xl">
             A prova: do antes ao depois.
           </h2>
-          <p className="mt-5 text-lg text-[#4A5568]">
+          <p className="mt-5 text-lg text-[#5C6450]">
             Arraste para ver a transformação. Obras reais, clientes reais.
           </p>
         </div>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {BA_PROJECTS.map((p) => (
-            <div key={p.label} className="rounded-2xl bg-[#F5F7FA] p-3 ring-1 ring-[#E6EAF0]">
+            <div key={p.label} className="rounded-2xl bg-[#F7F5EF] p-3 ring-1 ring-[#E6E2DB]">
               <BeforeAfterSlider {...p} />
             </div>
           ))}
@@ -716,18 +694,18 @@ const GALLERY_WORKS: Array<{ slug: string; cat: string; title: string }> = [
 
 function ServicesGallery() {
   return (
-    <section className="bg-[#F5F7FA] py-20 lg:py-28">
+    <section className="bg-blueprint-light py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">
             Galeria
           </p>
-          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-black leading-tight text-[#1F2419] sm:text-4xl lg:text-5xl">
             Trabalhos entregues nos últimos meses.
           </h2>
-          <p className="mt-5 text-base text-[#4A5568] sm:text-lg">
-            Cada obra é entregue com chave-na-mão, limpeza profunda e
-            garantia de 5 anos sobre intervenções estruturais.
+          <p className="mt-5 text-base text-[#5C6450] sm:text-lg">
+            Cada obra é entregue com chave-na-mão e limpeza profunda.
+            Apoio pós-obra incluído para tudo o que possa surgir.
           </p>
         </div>
 
@@ -739,7 +717,7 @@ function ServicesGallery() {
                 href="#orcamento"
                 className="group block w-[280px] flex-none sm:w-[320px] lg:w-auto"
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white ring-1 ring-[#E6EAF0] transition group-hover:ring-[#1E4FBF] group-hover:shadow-xl">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white ring-1 ring-[#E6E2DB] transition group-hover:ring-[#475345] group-hover:shadow-xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/gallery/${w.slug}.jpg`}
@@ -747,11 +725,11 @@ function ServicesGallery() {
                     loading="lazy"
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#1E4FBF] shadow-sm">
+                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#475345] shadow-sm">
                     {w.cat}
                   </span>
                 </div>
-                <h3 className="mt-3 text-base font-bold text-[#0B1E3A] transition group-hover:text-[#1E4FBF]">
+                <h3 className="mt-3 text-base font-bold text-[#1F2419] transition group-hover:text-[#475345]">
                   {w.title}
                 </h3>
               </a>
@@ -787,7 +765,7 @@ function Method() {
   ];
 
   return (
-    <section id="metodo" className="bg-[#0B1E3A] py-20 text-white lg:py-28">
+    <section id="metodo" className="bg-[#F7F2E7] bg-blueprint-light py-20 text-[#1F2419] lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid items-end gap-10 lg:grid-cols-[1.2fr_1fr]">
           <div>
@@ -796,7 +774,7 @@ function Method() {
               4 passos. Zero dores de cabeça.
             </h2>
           </div>
-          <p className="text-lg text-white/75">
+          <p className="text-lg text-[#5C6450]">
             Nós tratamos da câmara, das plantas, dos materiais e do entulho.
             O seu único trabalho é escolher os acabamentos.
           </p>
@@ -806,23 +784,23 @@ function Method() {
           {steps.map((s) => (
             <div
               key={s.n}
-              className="relative rounded-3xl bg-white/5 p-7 ring-1 ring-white/10 backdrop-blur"
+              className="relative rounded-3xl bg-white p-7 ring-1 ring-[#E6E2DB] shadow-md"
             >
               <span className="text-5xl font-black text-[#FF7A1A]">{s.n}</span>
               <h3 className="mt-4 text-xl font-bold">{s.title}</h3>
-              <p className="mt-2 text-sm text-white/70">{s.text}</p>
+              <p className="mt-2 text-sm text-[#5C6450]">{s.text}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-6 rounded-3xl bg-white/5 p-8 ring-1 ring-white/10 sm:flex-row sm:justify-between">
+        <div className="mt-12 flex flex-col items-center gap-6 rounded-3xl bg-white p-8 ring-1 ring-[#E6E2DB] shadow-md sm:flex-row sm:justify-between">
           <div className="flex items-center gap-5">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FF7A1A]">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z" /></svg>
             </div>
             <div>
-              <h3 className="text-xl font-black">Garantia Total 5 Anos</h3>
-              <p className="text-sm text-white/70">Em todas as intervenções estruturais. Assistência em 48h.</p>
+              <h3 className="text-xl font-black">Apoio pós-obra</h3>
+              <p className="text-sm text-[#5C6450]">Em todas as intervenções estruturais. Assistência em 48h.</p>
             </div>
           </div>
           <a
@@ -853,17 +831,17 @@ function FAQSection() {
     { q: "Como garantem que o orçamento não aumenta?", a: "Fazemos um levantamento exaustivo antes de apresentar o orçamento. O preço é fixo e inclui mão-de-obra, materiais e acabamentos. Só muda se o cliente pedir alterações ao projecto original." },
     { q: "Preciso de sair de casa durante a obra?", a: "Na maioria dos casos, não. Organizamos o trabalho por fases para minimizar o impacto no dia-a-dia. Em obras maiores, avisamos os dias críticos com antecedência." },
     { q: "Quanto tempo demora uma remodelação de casa de banho?", a: "Entre 2 a 4 semanas, dependendo da complexidade. Damos-lhe o prazo exacto no orçamento e cumprimos rigorosamente." },
-    { q: "Trabalham com materiais que eu já comprei?", a: "Sim. Se já tem materiais preferidos, nós aplicamos. Caso contrário, trabalhamos com Margres, Roca, Grohe e CIN com condições especiais." },
+    { q: "Trabalham com materiais que eu já comprei?", a: "Sim. Se já tem materiais preferidos, nós aplicamos. Caso contrário, sugerimos materiais de marcas reconhecidas conforme o orçamento e estilo pretendido." },
     { q: "E se aparecerem problemas ocultos durante a obra?", a: "Antes de iniciar fazemos uma inspecção técnica. Se surgir algo inesperado contactamos imediatamente, explicamos e apresentamos opções com custos antes de avançar. Sem surpresas." },
     { q: "Tratam da limpeza no final?", a: "Sim. Deixamos a casa pronta a habitar — sem poeiras, sem entulho e sem restos de obra." },
   ];
 
   return (
-    <section id="faq" className="bg-white py-20 lg:py-28">
+    <section id="faq" className="bg-blueprint-light py-20 lg:py-28">
       <div className="mx-auto max-w-3xl px-5 lg:px-8">
         <div className="text-center">
           <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#FF7A1A]">Perguntas frequentes</p>
-          <h2 className="text-3xl font-black leading-tight text-[#0B1E3A] sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-black leading-tight text-[#1F2419] sm:text-4xl lg:text-5xl">
             Tire as dúvidas antes
             <br />de pedir orçamento.
           </h2>
@@ -873,19 +851,19 @@ function FAQSection() {
           {faqs.map((f, i) => {
             const open = openIdx === i;
             return (
-              <div key={f.q} className="overflow-hidden rounded-2xl border border-[#E6EAF0]">
+              <div key={f.q} className="overflow-hidden rounded-2xl border border-[#E6E2DB]">
                 <button
                   type="button"
                   onClick={() => setOpenIdx(open ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 bg-white px-6 py-5 text-left hover:bg-[#F5F7FA]"
+                  className="flex w-full items-center justify-between gap-4 bg-white px-6 py-5 text-left hover:bg-[#F7F5EF]"
                 >
-                  <span className="text-base font-bold text-[#0B1E3A] sm:text-lg">{f.q}</span>
-                  <span className={`flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[#1E4FBF] text-white transition ${open ? "rotate-45" : ""}`}>
+                  <span className="text-base font-bold text-[#1F2419] sm:text-lg">{f.q}</span>
+                  <span className={`flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[#475345] text-white transition ${open ? "rotate-45" : ""}`}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"><path d="M12 5v14M5 12h14" /></svg>
                   </span>
                 </button>
                 {open && (
-                  <div className="border-t border-[#E6EAF0] bg-[#F5F7FA] px-6 py-5 text-[#4A5568]">
+                  <div className="border-t border-[#E6E2DB] bg-[#F7F5EF] px-6 py-5 text-[#5C6450]">
                     {f.a}
                   </div>
                 )}
@@ -956,9 +934,9 @@ function LeadCTA() {
   }
 
   return (
-    <section id="orcamento" className="relative overflow-hidden bg-[#1E4FBF] py-20 text-white lg:py-28">
+    <section id="orcamento" className="relative overflow-hidden bg-[#F7F2E7] bg-blueprint-light py-20 text-[#1F2419] lg:py-28">
       <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#FF7A1A]/30 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-20 -right-10 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-20 -right-10 h-96 w-96 rounded-full bg-[#475345]/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-4xl px-5 text-center lg:px-8">
         <h2 className="text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
@@ -966,7 +944,7 @@ function LeadCTA() {
           <br />
           Resposta em 24 horas.
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-lg text-white/80">
+        <p className="mx-auto mt-5 max-w-xl text-lg text-[#5C6450]">
           Envie-nos uma mensagem com o que precisa. Recebe o preço fechado no WhatsApp.
         </p>
 
@@ -979,8 +957,8 @@ function LeadCTA() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-black text-[#0B1E3A]">Falta um clique no seu email.</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-[#4A5568]">
+                <h3 className="text-xl font-black text-[#1F2419]">Falta um clique no seu email.</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-[#5C6450]">
                   Abrimos a sua aplicação de email com o pedido pronto a enviar.
                   Confirme e carregue em <strong>Enviar</strong> &mdash; respondemos em 24 horas.
                   Se preferir, fale connosco directamente pelo WhatsApp abaixo.
@@ -1002,7 +980,7 @@ function LeadCTA() {
               required
               autoComplete="name"
               placeholder="O seu nome"
-              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]"
+              className="rounded-2xl bg-[#F7F5EF] px-5 py-4 text-base text-[#1F2419] placeholder:text-[#5C6450] focus:outline-none focus:ring-2 focus:ring-[#475345]"
               aria-invalid={Boolean(errors.name)}
               aria-describedby={errors.name ? "lead-name-err" : undefined}
             />
@@ -1018,7 +996,7 @@ function LeadCTA() {
               required
               autoComplete="tel"
               placeholder="WhatsApp / Telemóvel (ex: 931 428 476)"
-              className="rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]"
+              className="rounded-2xl bg-[#F7F5EF] px-5 py-4 text-base text-[#1F2419] placeholder:text-[#5C6450] focus:outline-none focus:ring-2 focus:ring-[#475345]"
               aria-invalid={Boolean(errors.phone)}
               aria-describedby={errors.phone ? "lead-phone-err" : undefined}
             />
@@ -1032,7 +1010,7 @@ function LeadCTA() {
               name="message"
               rows={3}
               placeholder="Descreva brevemente a obra (opcional)"
-              className="resize-none rounded-2xl bg-[#F5F7FA] px-5 py-4 text-base text-[#0B1E3A] placeholder:text-[#4A5568] focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]"
+              className="resize-none rounded-2xl bg-[#F7F5EF] px-5 py-4 text-base text-[#1F2419] placeholder:text-[#5C6450] focus:outline-none focus:ring-2 focus:ring-[#475345]"
               aria-invalid={Boolean(errors.message)}
               aria-describedby={errors.message ? "lead-message-err" : undefined}
             />
@@ -1049,8 +1027,8 @@ function LeadCTA() {
           </form>
         )}
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-white/80">
-          <a href={PHONES.waLink} className="inline-flex items-center gap-2 font-semibold hover:text-white" target="_blank" rel="noopener noreferrer">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-[#5C6450]">
+          <a href={PHONES.waLink} className="inline-flex items-center gap-2 font-semibold hover:text-[#1F2419]" target="_blank" rel="noopener noreferrer">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
             {PHONES.primary}
           </a>
@@ -1067,16 +1045,20 @@ function LeadCTA() {
    ------------------------------------------------------------------------- */
 function Footer() {
   return (
-    <footer className="bg-[#0B1E3A] text-white">
+    <footer className="bg-[#1F2419] text-white">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#1E4FBF] text-lg font-black text-white">C</span>
-              <span className="text-xl font-black">CRONO<span className="text-[#FF7A1A]">.</span></span>
+            <div className="flex items-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-cronograma.png"
+                alt="Grupo Cronograma Home Service"
+                className="h-16 w-auto object-contain brightness-0 invert opacity-90"
+              />
             </div>
             <p className="mt-4 text-sm text-white/70">
-              Remodelações premium em Lisboa e arredores. 20 anos a transformar casas com rigor e compromisso.
+              Remodelações em Lisboa e arredores. Transformamos casas com rigor e compromisso.
             </p>
             <p className="mt-4 text-xs text-white/50">NIF: — · Alvará: —</p>
           </div>
@@ -1158,7 +1140,7 @@ function Footer() {
             </a>
           </nav>
           <div className="flex flex-col gap-3 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-            <p>© {new Date().getFullYear()} Cronograma Home Service. Todos os direitos reservados.</p>
+            <p>© {new Date().getFullYear()} Grupo Cronograma Home Service · Studio da Serra. Todos os direitos reservados.</p>
             <p>Desenvolvido por CMTecnologia</p>
           </div>
         </div>
@@ -1172,7 +1154,13 @@ function Footer() {
    ------------------------------------------------------------------------- */
 export default function V2Home() {
   return (
-    <div className="relative z-10 min-h-screen bg-white text-[#1A2238]">
+    <div className="relative z-0 min-h-screen text-[#2A2F23]">
+      {/* Background fixo da planta — div absoluto fixed, funciona em iOS Safari */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/background-blueprint-hq.jpg')" }}
+      />
       <Header />
       <main>
         <Hero />
