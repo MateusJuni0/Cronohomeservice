@@ -169,7 +169,7 @@ function Hero() {
             em mãos certas
           </h1>
 
-          <p className="mx-auto mt-7 max-w-xl text-lg text-[#3D4A3A]/80 sm:text-xl">
+          <p className="mx-auto mt-7 max-w-xl text-lg font-semibold text-[#3D4A3A] sm:text-xl">
             Remodelações, reparações e decoração. Orçamento fixo em 24 horas,
             entrega chave-na-mão. Sem surpresas.
           </p>
@@ -195,7 +195,7 @@ function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-sm text-[#3D4A3A]/80">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-base font-bold text-[#3D4A3A]">
             <span className="inline-flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" strokeWidth="2.8"><path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
               Equipa própria
