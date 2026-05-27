@@ -58,7 +58,10 @@ function Header() {
             alt="Grupo Cronograma Home Service"
             className="h-12 w-auto object-contain sm:h-14 lg:h-16"
           />
-          <span className="font-serif text-lg font-bold tracking-tight text-[#3D4A3A] sm:text-xl lg:text-2xl">
+          <span
+            className="text-lg tracking-wide text-[#3D4A3A] sm:text-xl lg:text-2xl"
+            style={{ fontFamily: "var(--font-alfa-slab), 'Cooper Black', Georgia, serif" }}
+          >
             CRONOGRAMA
           </span>
         </a>

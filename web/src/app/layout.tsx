@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond, Alfa_Slab_One } from "next/font/google";
 import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
@@ -15,6 +15,14 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600"],
+});
+
+// Fonte da logomarca "Crono / grama" — slab serif chunky (pedido cliente 2026-05-27)
+const alfaSlab = Alfa_Slab_One({
+  variable: "--font-alfa-slab",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
 });
 
 const SITE_URL = "https://cronohomeservice.pt";
@@ -253,7 +261,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt" className={`${dmSans.variable} ${cormorant.variable} h-full antialiased`}>
+    <html lang="pt" className={`${dmSans.variable} ${cormorant.variable} ${alfaSlab.variable} h-full antialiased`}>
       <head>
         <script
           type="application/ld+json"
