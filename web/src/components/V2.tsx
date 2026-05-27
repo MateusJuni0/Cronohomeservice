@@ -153,23 +153,24 @@ function Hero() {
             className="mx-auto mb-7 block h-72 w-auto object-contain drop-shadow-2xl sm:h-96 lg:h-[28rem]"
           />
 
-          <div className="mx-auto mb-6 inline-flex items-center gap-2.5 rounded-full bg-[#3D4A3A]/10 px-4 py-2 ring-1 ring-[#3D4A3A]/30 backdrop-blur">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3D4A3A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          {/* Hero badge + H1 + subtitle em laranja-marca (pedido cliente 2026-05-27 round 4) */}
+          <div className="mx-auto mb-6 inline-flex items-center gap-2.5 rounded-full bg-[#FF7A1A]/10 px-4 py-2 ring-1 ring-[#FF7A1A]/40 backdrop-blur">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <path d="M12 8v4l3 2" strokeLinecap="round" />
             </svg>
-            <span className="text-sm font-semibold tracking-wide text-[#3D4A3A]">
+            <span className="text-sm font-bold tracking-wide text-[#FF7A1A]">
               Orçamento em 24 horas
             </span>
           </div>
 
-          <h1 className="text-5xl font-black leading-[0.95] tracking-tight text-[#3D4A3A] sm:text-6xl lg:text-[68px]">
+          <h1 className="text-5xl font-black leading-[0.95] tracking-tight text-[#FF7A1A] sm:text-6xl lg:text-[68px]">
             A sua casa,
             <br />
             em mãos certas
           </h1>
 
-          <p className="mx-auto mt-7 max-w-xl text-lg font-semibold text-[#3D4A3A] sm:text-xl">
+          <p className="mx-auto mt-7 max-w-xl text-lg font-semibold text-[#FF7A1A] sm:text-xl">
             Remodelações, reparações e decoração. Orçamento fixo em 24 horas,
             entrega chave-na-mão. Sem surpresas.
           </p>
@@ -177,7 +178,7 @@ function Hero() {
           <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
             <a
               href="#orcamento"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#1A1A1A] px-9 py-5 text-base font-black text-white shadow-[0_12px_40px_rgba(0,0,0,0.35)] transition hover:-translate-y-0.5 hover:bg-[#2A2A2A]"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF7A1A] px-9 py-5 text-base font-black text-white shadow-[0_12px_40px_rgba(255,122,26,0.45)] transition hover:-translate-y-0.5 hover:bg-[#E56A0E]"
             >
               Pedir Orçamento Grátis
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round">
