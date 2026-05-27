@@ -58,12 +58,14 @@ function Header() {
             alt="Grupo Cronograma Home Service"
             className="h-12 w-auto object-contain sm:h-14 lg:h-16"
           />
-          <span
-            className="text-lg tracking-wide text-[#3D4A3A] sm:text-xl lg:text-2xl"
-            style={{ fontFamily: "var(--font-alfa-slab), 'Cooper Black', Georgia, serif" }}
-          >
-            CRONOGRAMA
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* "Cronograma" extraido do PNG da logomarca para match exato de fonte
+              (pedido cliente 2026-05-27 round 7: "Colocar a letra da logomarca") */}
+          <img
+            src="/cronograma-text.png"
+            alt="Cronograma"
+            className="h-7 w-auto object-contain sm:h-8 lg:h-10"
+          />
         </a>
 
         {/* RIGHT — desktop nav (2 links) + CTA / mobile hamburger */}
