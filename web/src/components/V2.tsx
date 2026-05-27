@@ -156,8 +156,15 @@ function Hero() {
             className="mx-auto mb-7 block h-72 w-auto object-contain drop-shadow-2xl sm:h-96 lg:h-[28rem]"
           />
 
-          {/* Hero badge + H1 + subtitle em laranja-marca (pedido cliente 2026-05-27 round 4) */}
-          <div className="mx-auto mb-6 inline-flex items-center gap-2.5 rounded-full bg-[#FF7A1A]/10 px-4 py-2 ring-1 ring-[#FF7A1A]/40 backdrop-blur">
+          {/* Hero ordem (pedido cliente 2026-05-27 round 6):
+              H1 -> Badge -> CTAs juntos -> Subtitle deslocado para baixo */}
+          <h1 className="text-5xl font-black leading-[0.95] tracking-tight text-[#FF7A1A] sm:text-6xl lg:text-[68px]">
+            A sua casa,
+            <br />
+            em mãos certas
+          </h1>
+
+          <div className="mx-auto mt-7 mb-5 inline-flex items-center gap-2.5 rounded-full bg-[#FF7A1A]/10 px-4 py-2 ring-1 ring-[#FF7A1A]/40 backdrop-blur">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7A1A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="12" cy="12" r="10" />
               <path d="M12 8v4l3 2" strokeLinecap="round" />
@@ -167,18 +174,7 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="text-5xl font-black leading-[0.95] tracking-tight text-[#FF7A1A] sm:text-6xl lg:text-[68px]">
-            A sua casa,
-            <br />
-            em mãos certas
-          </h1>
-
-          <p className="mx-auto mt-7 max-w-xl text-lg font-semibold text-[#FF7A1A] sm:text-xl">
-            Remodelações, reparações e decoração. Orçamento fixo em 24 horas,
-            entrega chave-na-mão. Sem surpresas.
-          </p>
-
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+          <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
             <a
               href="#orcamento"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF7A1A] px-9 py-5 text-base font-black text-white shadow-[0_12px_40px_rgba(255,122,26,0.45)] transition hover:-translate-y-0.5 hover:bg-[#E56A0E]"
@@ -198,6 +194,11 @@ function Hero() {
               WhatsApp direto
             </a>
           </div>
+
+          <p className="mx-auto mt-9 max-w-xl text-lg font-semibold text-[#FF7A1A] sm:text-xl">
+            Remodelações, reparações e decoração. Orçamento fixo em 24 horas,
+            entrega chave-na-mão. Sem surpresas.
+          </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-base font-bold text-[#3D4A3A]">
             <span className="inline-flex items-center gap-2">
